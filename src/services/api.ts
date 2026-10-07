@@ -1166,15 +1166,19 @@ class ApiService {
       agreeableness: number
       emotional_stability: number
     }) => {
+      // Convert 1.0 - 5.0 scale to Big Five raw 17 - 68 scale
+      const toOcean68 = (val: number) => 17 + Math.max(0, Math.min(4, (val - 1))) * (51 / 4)
+      const toNeuroticism68 = (stability: number) => 68 - Math.max(0, Math.min(4, (stability - 1))) * (51 / 4)
+
       try {
         const res: any = await this.request<any>('/analytics/simulate/sds', {
           method: 'POST',
           body: JSON.stringify({
-            conscientiousness: payload.conscientiousness * 10,
-            openness: payload.openness * 10,
-            extraversion: payload.extraversion * 10,
-            agreeableness: payload.agreeableness * 10,
-            neuroticism: (5 - payload.emotional_stability) * 10,
+            conscientiousness: toOcean68(payload.conscientiousness),
+            openness: toOcean68(payload.openness),
+            extraversion: toOcean68(payload.extraversion),
+            agreeableness: toOcean68(payload.agreeableness),
+            neuroticism: toNeuroticism68(payload.emotional_stability),
           })
         })
         const sim = res?.simulation || res?.data?.simulation || res?.data || res
@@ -1185,7 +1189,7 @@ class ApiService {
             success_probability: Number(prob),
             predicted_profile: prob >= 0.5 ? 'HIGH_PERFORMER_LEADER' : 'DEVELOPING_SPECIALIST',
             leadership_readiness_index: index,
-            archetype: prob >= 0.75 ? 'Strategic Execution Driver' : prob >= 0.5 ? 'Adaptive Innovation Catalyst' : 'Technical Specialist',
+            archetype: sim.archetype || (prob >= 0.75 ? 'Strategic Execution Driver' : prob >= 0.5 ? 'Adaptive Innovation Catalyst' : 'Technical Specialist'),
             ethical_ai_notice: sim.ethicalSafeguardNotice || 'Trait indicators represent developmental coaching competencies.',
             provenance: 'REAL MODEL OUTPUT (SDS N=161, 5-Fold CV 90.7%)'
           }
@@ -1194,13 +1198,13 @@ class ApiService {
         console.warn('[API] /analytics/simulate/sds failed, calculating client-side fallback:', err)
       }
 
-      const intercept = -6.8912
-      const c = payload.conscientiousness ?? 3
-      const o = payload.openness ?? 3
-      const e = payload.extraversion ?? 3
-      const a = payload.agreeableness ?? 3
-      const n = payload.emotional_stability ?? 3
-      const z = intercept + 2.0543 * c + 1.6421 * o + 0.3210 * e + 0.2845 * a + 0.4120 * n
+      const cNorm = (toOcean68(payload.conscientiousness ?? 3.5) - 45.21) / 10.96
+      const oNorm = (toOcean68(payload.openness ?? 3.5) - 41.33) / 11.29
+      const eNorm = (toOcean68(payload.extraversion ?? 3.5) - 43.20) / 12.10
+      const aNorm = (toOcean68(payload.agreeableness ?? 3.5) - 44.60) / 11.26
+      const nNorm = (toNeuroticism68(payload.emotional_stability ?? 3.5) - 36.19) / 11.23
+
+      const z = 0.2834 + 2.2124 * cNorm + 1.8830 * oNorm + 1.3515 * eNorm + 0.5353 * aNorm + 0.7123 * nNorm
       const prob = 1 / (1 + Math.exp(-Math.max(-20, Math.min(20, z))))
       return {
         success_probability: Number(prob.toFixed(4)),
