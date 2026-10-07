@@ -1,0 +1,382 @@
+{
+  "status": "success",
+  "provenance": "REAL DATA",
+  "generated_at": "2026-10-07T14:09:28.185441",
+  "total_unique_skills": 8208,
+  "top_skills": [
+    {
+      "rank": 1,
+      "skill_name": "SQL",
+      "demand_count": 1553,
+      "market_penetration_percent": 9.8,
+      "category": "Programming & Querying"
+    },
+    {
+      "rank": 2,
+      "skill_name": "Analytics",
+      "demand_count": 1048,
+      "market_penetration_percent": 6.62,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 3,
+      "skill_name": "Python",
+      "demand_count": 962,
+      "market_penetration_percent": 6.07,
+      "category": "Programming & Querying"
+    },
+    {
+      "rank": 4,
+      "skill_name": "Java",
+      "demand_count": 917,
+      "market_penetration_percent": 5.79,
+      "category": "Programming & Querying"
+    },
+    {
+      "rank": 5,
+      "skill_name": "SAS",
+      "demand_count": 837,
+      "market_penetration_percent": 5.28,
+      "category": "Programming & Querying"
+    },
+    {
+      "rank": 6,
+      "skill_name": "Financial Analytics & Modeling",
+      "demand_count": 824,
+      "market_penetration_percent": 5.2,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 7,
+      "skill_name": "Machine Learning",
+      "demand_count": 751,
+      "market_penetration_percent": 4.74,
+      "category": "Machine Learning & AI"
+    },
+    {
+      "rank": 8,
+      "skill_name": "Business Analysis",
+      "demand_count": 730,
+      "market_penetration_percent": 4.61,
+      "category": "Business & Management"
+    },
+    {
+      "rank": 9,
+      "skill_name": "Data Analysis",
+      "demand_count": 721,
+      "market_penetration_percent": 4.55,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 10,
+      "skill_name": "Advanced Excel & VBA",
+      "demand_count": 715,
+      "market_penetration_percent": 4.51,
+      "category": "BI & Visualization"
+    },
+    {
+      "rank": 11,
+      "skill_name": "Digital Marketing & Growth",
+      "demand_count": 612,
+      "market_penetration_percent": 3.86,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 12,
+      "skill_name": "Project Management",
+      "demand_count": 588,
+      "market_penetration_percent": 3.71,
+      "category": "Business & Management"
+    },
+    {
+      "rank": 13,
+      "skill_name": "JavaScript",
+      "demand_count": 564,
+      "market_penetration_percent": 3.56,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 14,
+      "skill_name": "Data Analytics",
+      "demand_count": 526,
+      "market_penetration_percent": 3.32,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 15,
+      "skill_name": "SEO & Web Analytics",
+      "demand_count": 518,
+      "market_penetration_percent": 3.27,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 16,
+      "skill_name": "HTML/CSS",
+      "demand_count": 489,
+      "market_penetration_percent": 3.09,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 17,
+      "skill_name": "Outsourcing",
+      "demand_count": 445,
+      "market_penetration_percent": 2.81,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 18,
+      "skill_name": "Sales",
+      "demand_count": 432,
+      "market_penetration_percent": 2.73,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 19,
+      "skill_name": "Accounting & Audit Analytics",
+      "demand_count": 398,
+      "market_penetration_percent": 2.51,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 20,
+      "skill_name": "Marketing",
+      "demand_count": 363,
+      "market_penetration_percent": 2.29,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 21,
+      "skill_name": "Operations",
+      "demand_count": 360,
+      "market_penetration_percent": 2.27,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 22,
+      "skill_name": "Statistics & Probability",
+      "demand_count": 347,
+      "market_penetration_percent": 2.19,
+      "category": "Math & Statistics"
+    },
+    {
+      "rank": 23,
+      "skill_name": "Hadoop ecosystem",
+      "demand_count": 338,
+      "market_penetration_percent": 2.13,
+      "category": "Data Engineering & Cloud"
+    },
+    {
+      "rank": 24,
+      "skill_name": "Business Process",
+      "demand_count": 329,
+      "market_penetration_percent": 2.08,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 25,
+      "skill_name": "Apache Spark",
+      "demand_count": 315,
+      "market_penetration_percent": 1.99,
+      "category": "Data Engineering & Cloud"
+    },
+    {
+      "rank": 26,
+      "skill_name": "Predictive Modeling",
+      "demand_count": 314,
+      "market_penetration_percent": 1.98,
+      "category": "Math & Statistics"
+    },
+    {
+      "rank": 27,
+      "skill_name": "Big Data",
+      "demand_count": 312,
+      "market_penetration_percent": 1.97,
+      "category": "Data Engineering & Cloud"
+    },
+    {
+      "rank": 28,
+      "skill_name": "Financial Analysis",
+      "demand_count": 301,
+      "market_penetration_percent": 1.9,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 29,
+      "skill_name": "Data Science",
+      "demand_count": 298,
+      "market_penetration_percent": 1.88,
+      "category": "Domain & Functional Analytics"
+    },
+    {
+      "rank": 30,
+      "skill_name": "Business Development",
+      "demand_count": 293,
+      "market_penetration_percent": 1.85,
+      "category": "Domain & Functional Analytics"
+    }
+  ],
+  "skill_clusters": [
+    {
+      "skill_a": "Machine Learning",
+      "skill_b": "Python",
+      "cooccurrence_count": 402,
+      "jaccard_similarity": 0.307,
+      "relationship_insight": "Machine Learning and Python co-occur in 402 job postings (Jaccard index 0.307)"
+    },
+    {
+      "skill_a": "HTML/CSS",
+      "skill_b": "JavaScript",
+      "cooccurrence_count": 305,
+      "jaccard_similarity": 0.408,
+      "relationship_insight": "HTML/CSS and JavaScript co-occur in 305 job postings (Jaccard index 0.408)"
+    },
+    {
+      "skill_a": "Digital Marketing & Growth",
+      "skill_b": "SEO & Web Analytics",
+      "cooccurrence_count": 277,
+      "jaccard_similarity": 0.325,
+      "relationship_insight": "Digital Marketing & Growth and SEO & Web Analytics co-occur in 277 job postings (Jaccard index 0.325)"
+    },
+    {
+      "skill_a": "Python",
+      "skill_b": "SQL",
+      "cooccurrence_count": 254,
+      "jaccard_similarity": 0.112,
+      "relationship_insight": "Python and SQL co-occur in 254 job postings (Jaccard index 0.112)"
+    },
+    {
+      "skill_a": "Analytics",
+      "skill_b": "SAS",
+      "cooccurrence_count": 236,
+      "jaccard_similarity": 0.143,
+      "relationship_insight": "Analytics and SAS co-occur in 236 job postings (Jaccard index 0.143)"
+    },
+    {
+      "skill_a": "Advanced Excel & VBA",
+      "skill_b": "SQL",
+      "cooccurrence_count": 228,
+      "jaccard_similarity": 0.112,
+      "relationship_insight": "Advanced Excel & VBA and SQL co-occur in 228 job postings (Jaccard index 0.112)"
+    },
+    {
+      "skill_a": "Java",
+      "skill_b": "Python",
+      "cooccurrence_count": 213,
+      "jaccard_similarity": 0.128,
+      "relationship_insight": "Java and Python co-occur in 213 job postings (Jaccard index 0.128)"
+    },
+    {
+      "skill_a": "SAS",
+      "skill_b": "SQL",
+      "cooccurrence_count": 211,
+      "jaccard_similarity": 0.097,
+      "relationship_insight": "SAS and SQL co-occur in 211 job postings (Jaccard index 0.097)"
+    },
+    {
+      "skill_a": "Java",
+      "skill_b": "JavaScript",
+      "cooccurrence_count": 195,
+      "jaccard_similarity": 0.152,
+      "relationship_insight": "Java and JavaScript co-occur in 195 job postings (Jaccard index 0.152)"
+    },
+    {
+      "skill_a": "Java",
+      "skill_b": "SQL",
+      "cooccurrence_count": 184,
+      "jaccard_similarity": 0.08,
+      "relationship_insight": "Java and SQL co-occur in 184 job postings (Jaccard index 0.08)"
+    },
+    {
+      "skill_a": "Accounting & Audit Analytics",
+      "skill_b": "Financial Analytics & Modeling",
+      "cooccurrence_count": 182,
+      "jaccard_similarity": 0.175,
+      "relationship_insight": "Accounting & Audit Analytics and Financial Analytics & Modeling co-occur in 182 job postings (Jaccard index 0.175)"
+    },
+    {
+      "skill_a": "Data Analysis",
+      "skill_b": "SQL",
+      "cooccurrence_count": 179,
+      "jaccard_similarity": 0.085,
+      "relationship_insight": "Data Analysis and SQL co-occur in 179 job postings (Jaccard index 0.085)"
+    },
+    {
+      "skill_a": "Analytics",
+      "skill_b": "SQL",
+      "cooccurrence_count": 170,
+      "jaccard_similarity": 0.07,
+      "relationship_insight": "Analytics and SQL co-occur in 170 job postings (Jaccard index 0.07)"
+    },
+    {
+      "skill_a": "Analytics",
+      "skill_b": "Python",
+      "cooccurrence_count": 155,
+      "jaccard_similarity": 0.084,
+      "relationship_insight": "Analytics and Python co-occur in 155 job postings (Jaccard index 0.084)"
+    },
+    {
+      "skill_a": "Machine Learning",
+      "skill_b": "SQL",
+      "cooccurrence_count": 149,
+      "jaccard_similarity": 0.069,
+      "relationship_insight": "Machine Learning and SQL co-occur in 149 job postings (Jaccard index 0.069)"
+    },
+    {
+      "skill_a": "Advanced Excel & VBA",
+      "skill_b": "SAS",
+      "cooccurrence_count": 143,
+      "jaccard_similarity": 0.101,
+      "relationship_insight": "Advanced Excel & VBA and SAS co-occur in 143 job postings (Jaccard index 0.101)"
+    },
+    {
+      "skill_a": "HTML/CSS",
+      "skill_b": "Java",
+      "cooccurrence_count": 142,
+      "jaccard_similarity": 0.112,
+      "relationship_insight": "HTML/CSS and Java co-occur in 142 job postings (Jaccard index 0.112)"
+    },
+    {
+      "skill_a": "Advanced Excel & VBA",
+      "skill_b": "Data Analysis",
+      "cooccurrence_count": 141,
+      "jaccard_similarity": 0.109,
+      "relationship_insight": "Advanced Excel & VBA and Data Analysis co-occur in 141 job postings (Jaccard index 0.109)"
+    },
+    {
+      "skill_a": "Analytics",
+      "skill_b": "Outsourcing",
+      "cooccurrence_count": 111,
+      "jaccard_similarity": 0.08,
+      "relationship_insight": "Analytics and Outsourcing co-occur in 111 job postings (Jaccard index 0.08)"
+    },
+    {
+      "skill_a": "Python",
+      "skill_b": "SAS",
+      "cooccurrence_count": 111,
+      "jaccard_similarity": 0.066,
+      "relationship_insight": "Python and SAS co-occur in 111 job postings (Jaccard index 0.066)"
+    }
+  ],
+  "cooccurrence_nodes": [
+    "SQL",
+    "Analytics",
+    "Python",
+    "Java",
+    "SAS",
+    "Financial Analytics & Modeling",
+    "Machine Learning",
+    "Business Analysis",
+    "Data Analysis",
+    "Advanced Excel & VBA",
+    "Digital Marketing & Growth",
+    "Project Management",
+    "JavaScript",
+    "Data Analytics",
+    "SEO & Web Analytics",
+    "HTML/CSS",
+    "Outsourcing",
+    "Sales",
+    "Accounting & Audit Analytics",
+    "Marketing"
+  ]
+}

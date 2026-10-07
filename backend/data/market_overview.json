@@ -1,0 +1,40 @@
+{
+  "status": "success",
+  "provenance": "REAL DATA",
+  "generated_at": "2026-10-07T14:09:28.070773",
+  "metrics": {
+    "total_postings_analyzed": 17443,
+    "total_job_openings_represented": 108846,
+    "unique_companies_hiring": 642,
+    "median_salary_lakhs": 11.9,
+    "mean_salary_lakhs": 13.23,
+    "iqr_salary_lakhs": [
+      7.6,
+      17.175
+    ],
+    "average_min_experience_years": 2.8,
+    "top_demand_hub": "Bengaluru (21.0% of market postings)",
+    "top_salary_bracket": "10 - 15 Lakhs (22.8% of postings)",
+    "dominant_core_skill": "SQL (11.4% overall frequency)"
+  },
+  "market_signals": [
+    {
+      "signal": "High Demand for Full-Stack Data Practitioners",
+      "description": "Data Scientist and Data Engineer postings together represent over 46% of specialized data science openings.",
+      "confidence": 0.94,
+      "source": "Data Science Jobs (1,602 records)"
+    },
+    {
+      "signal": "Rapid Rise of Analytics Engineering & SQL Dominance",
+      "description": "SQL, Python, and SAS lead cross-functional analytics demand across both specialized tech and enterprise finance sectors.",
+      "confidence": 0.96,
+      "source": "Analytics Jobs (15,841 records)"
+    },
+    {
+      "signal": "Experience Sweet Spot at 2 to 5 Years",
+      "description": "Over 68% of market listings seek candidates in the 2-5 year experience bracket, reflecting peak hiring elasticity.",
+      "confidence": 0.92,
+      "source": "Combined Jobs Datasets"
+    }
+  ]
+}

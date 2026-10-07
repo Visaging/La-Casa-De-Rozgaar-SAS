@@ -1,0 +1,113 @@
+{
+  "model_name": "SDS Personality-Success Associative Profiler (Logistic & RF Ensemble)",
+  "target": "success_classification_high_low",
+  "sample_size": 161,
+  "features": [
+    "neuroticism",
+    "extraversion",
+    "openness",
+    "agreeableness",
+    "conscientiousness"
+  ],
+  "cross_validation_5fold": {
+    "logistic_regression": {
+      "mean_accuracy": 0.907,
+      "std_accuracy": 0.0589,
+      "mean_precision": 0.892,
+      "mean_recall": 0.9412,
+      "mean_f1": 0.9145,
+      "mean_roc_auc": 0.9493
+    },
+    "decision_tree": {
+      "mean_accuracy": 0.9377,
+      "mean_f1": 0.9391,
+      "mean_roc_auc": 0.9424
+    },
+    "random_forest": {
+      "mean_accuracy": 0.9502,
+      "mean_f1": 0.9525,
+      "mean_roc_auc": 0.9945
+    }
+  },
+  "test_set_metrics": {
+    "accuracy": 0.9091,
+    "precision": 0.8889,
+    "recall": 0.9412,
+    "f1_score": 0.9143,
+    "roc_auc": 0.9228,
+    "confusion_matrix": [
+      [
+        14,
+        2
+      ],
+      [
+        1,
+        16
+      ]
+    ]
+  },
+  "feature_coefficients": {
+    "neuroticism": {
+      "coefficient": 0.7123,
+      "odds_ratio": 2.0388,
+      "rf_importance": 0.0268,
+      "interpretation": "Conscientiousness & Openness are primary drivers of leadership and customer-facing delivery"
+    },
+    "extraversion": {
+      "coefficient": 1.3515,
+      "odds_ratio": 3.8633,
+      "rf_importance": 0.1595,
+      "interpretation": "Conscientiousness & Openness are primary drivers of leadership and customer-facing delivery"
+    },
+    "openness": {
+      "coefficient": 1.883,
+      "odds_ratio": 6.5731,
+      "rf_importance": 0.3284,
+      "interpretation": "Conscientiousness & Openness are primary drivers of leadership and customer-facing delivery"
+    },
+    "agreeableness": {
+      "coefficient": 0.5353,
+      "odds_ratio": 1.7079,
+      "rf_importance": 0.1093,
+      "interpretation": "Conscientiousness & Openness are primary drivers of leadership and customer-facing delivery"
+    },
+    "conscientiousness": {
+      "coefficient": 2.2124,
+      "odds_ratio": 9.1376,
+      "rf_importance": 0.376,
+      "interpretation": "Conscientiousness & Openness are primary drivers of leadership and customer-facing delivery"
+    }
+  },
+  "inference_weights": {
+    "features": [
+      "neuroticism",
+      "extraversion",
+      "openness",
+      "agreeableness",
+      "conscientiousness"
+    ],
+    "scaler_mean": [
+      36.192546583850934,
+      43.20496894409938,
+      41.32919254658385,
+      44.60248447204969,
+      45.2111801242236
+    ],
+    "scaler_scale": [
+      11.233001251553173,
+      12.096977710136215,
+      11.287202888114486,
+      11.258277563782793,
+      13.17083637835667
+    ],
+    "coefficients": [
+      0.7123400589629931,
+      1.351521213633101,
+      1.8829902466960888,
+      0.5352775634103997,
+      2.2123993374895368
+    ],
+    "intercept": -0.27015352846908003
+  },
+  "responsible_ai_notice": "This model is strictly designed for professional development, self-awareness coaching, and mentoring. It MUST NOT be used for automated applicant filtering or negative hiring determinations."
+}

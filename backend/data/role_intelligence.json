@@ -1,0 +1,386 @@
+{
+  "status": "success",
+  "provenance": "REAL DATA",
+  "generated_at": "2026-10-07T14:09:28.099419",
+  "roles": [
+    {
+      "role_title": "Business Analyst",
+      "postings_count": 188,
+      "market_share_percent": 11.7,
+      "openings_represented": 32843,
+      "salary_metrics": {
+        "q25_lakhs": 6.775,
+        "median_lakhs": 8.3,
+        "q75_lakhs": 11.1,
+        "mean_lakhs": 8.95,
+        "min_salary_median": 4.65,
+        "max_salary_median": 14.0
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 1.7,
+        "median_min_exp_years": 2.0,
+        "tier_distribution": {
+          "Entry-Level (0-2 yrs)": 149,
+          "Mid-Level (3-5 yrs)": 39
+        }
+      },
+      "top_hiring_companies": [
+        "TCS",
+        "Accenture",
+        "Genpact",
+        "Wipro",
+        "Cognizant"
+      ],
+      "core_skills": [
+        "Business Analysis",
+        "SQL",
+        "Requirements Engineering",
+        "Agile / Scrum Methodology",
+        "Communication & Storytelling"
+      ]
+    },
+    {
+      "role_title": "Data Engineer",
+      "postings_count": 188,
+      "market_share_percent": 11.7,
+      "openings_represented": 8044,
+      "salary_metrics": {
+        "q25_lakhs": 8.174999999999999,
+        "median_lakhs": 10.850000000000001,
+        "q75_lakhs": 13.6,
+        "mean_lakhs": 11.81,
+        "min_salary_median": 6.25,
+        "max_salary_median": 16.8
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 1.5,
+        "median_min_exp_years": 1.0,
+        "tier_distribution": {
+          "Entry-Level (0-2 yrs)": 155,
+          "Mid-Level (3-5 yrs)": 32,
+          "Senior-Level (6-9 yrs)": 1
+        }
+      },
+      "top_hiring_companies": [
+        "TCS",
+        "IBM",
+        "L&T Infotech",
+        "Accenture",
+        "Cognizant"
+      ],
+      "core_skills": [
+        "SQL",
+        "Apache Spark",
+        "Python",
+        "ETL Pipelines",
+        "Data Warehousing",
+        "AWS Cloud"
+      ]
+    },
+    {
+      "role_title": "Data Scientist",
+      "postings_count": 188,
+      "market_share_percent": 11.7,
+      "openings_represented": 9051,
+      "salary_metrics": {
+        "q25_lakhs": 9.674999999999999,
+        "median_lakhs": 12.8,
+        "q75_lakhs": 16.05,
+        "mean_lakhs": 13.53,
+        "min_salary_median": 7.0,
+        "max_salary_median": 20.0
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 1.5,
+        "median_min_exp_years": 2.0,
+        "tier_distribution": {
+          "Entry-Level (0-2 yrs)": 166,
+          "Mid-Level (3-5 yrs)": 22
+        }
+      },
+      "top_hiring_companies": [
+        "TCS",
+        "Accenture",
+        "IBM",
+        "Cognizant",
+        "Capgemini"
+      ],
+      "core_skills": [
+        "Python",
+        "Machine Learning",
+        "SQL",
+        "Statistics & Probability",
+        "Data Visualization & Storytelling",
+        "Scikit-Learn"
+      ]
+    },
+    {
+      "role_title": "Data Analyst",
+      "postings_count": 187,
+      "market_share_percent": 11.7,
+      "openings_represented": 18095,
+      "salary_metrics": {
+        "q25_lakhs": 3.5,
+        "median_lakhs": 5.0,
+        "q75_lakhs": 7.15,
+        "mean_lakhs": 5.71,
+        "min_salary_median": 3.0,
+        "max_salary_median": 8.9
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 0.8,
+        "median_min_exp_years": 1.0,
+        "tier_distribution": {
+          "Entry-Level (0-2 yrs)": 186,
+          "Mid-Level (3-5 yrs)": 1
+        }
+      },
+      "top_hiring_companies": [
+        "TCS",
+        "Cognizant",
+        "Accenture",
+        "Capgemini",
+        "Wipro"
+      ],
+      "core_skills": [
+        "SQL",
+        "Tableau",
+        "Power BI",
+        "Advanced Excel & VBA",
+        "Data Analytics",
+        "Communication & Storytelling"
+      ]
+    },
+    {
+      "role_title": "Senior Business Analyst",
+      "postings_count": 187,
+      "market_share_percent": 11.7,
+      "openings_represented": 14115,
+      "salary_metrics": {
+        "q25_lakhs": 10.0,
+        "median_lakhs": 13.0,
+        "q75_lakhs": 15.75,
+        "mean_lakhs": 13.17,
+        "min_salary_median": 8.0,
+        "max_salary_median": 19.0
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 4.0,
+        "median_min_exp_years": 4.0,
+        "tier_distribution": {
+          "Mid-Level (3-5 yrs)": 109,
+          "Entry-Level (0-2 yrs)": 39,
+          "Senior-Level (6-9 yrs)": 38,
+          "Lead / Principal (10+ yrs)": 1
+        }
+      },
+      "top_hiring_companies": [
+        "TCS",
+        "Accenture",
+        "Evalueserve",
+        "Cognizant",
+        "HCL Technologies"
+      ],
+      "core_skills": [
+        "Business Analysis",
+        "Stakeholder Management",
+        "Financial Analytics & Modeling",
+        "Agile / Scrum Methodology",
+        "Project Management"
+      ]
+    },
+    {
+      "role_title": "Senior Data Analyst",
+      "postings_count": 187,
+      "market_share_percent": 11.7,
+      "openings_represented": 3825,
+      "salary_metrics": {
+        "q25_lakhs": 6.1,
+        "median_lakhs": 8.6,
+        "q75_lakhs": 12.649999999999999,
+        "mean_lakhs": 9.57,
+        "min_salary_median": 5.6,
+        "max_salary_median": 12.2
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 2.9,
+        "median_min_exp_years": 3.0,
+        "tier_distribution": {
+          "Mid-Level (3-5 yrs)": 101,
+          "Entry-Level (0-2 yrs)": 79,
+          "Senior-Level (6-9 yrs)": 7
+        }
+      },
+      "top_hiring_companies": [
+        "Accenture",
+        "Capgemini",
+        "TCS",
+        "Unilog Content Solutions ( P)",
+        "Cognizant"
+      ],
+      "core_skills": [
+        "SQL",
+        "Tableau",
+        "Power BI",
+        "Business Intelligence",
+        "Predictive Modeling",
+        "Client & Stakeholder Management"
+      ]
+    },
+    {
+      "role_title": "Senior Data Scientist",
+      "postings_count": 185,
+      "market_share_percent": 11.5,
+      "openings_represented": 2129,
+      "salary_metrics": {
+        "q25_lakhs": 17.1,
+        "median_lakhs": 21.2,
+        "q75_lakhs": 25.5,
+        "mean_lakhs": 22.29,
+        "min_salary_median": 14.5,
+        "max_salary_median": 28.0
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 4.0,
+        "median_min_exp_years": 4.0,
+        "tier_distribution": {
+          "Mid-Level (3-5 yrs)": 115,
+          "Entry-Level (0-2 yrs)": 39,
+          "Senior-Level (6-9 yrs)": 30,
+          "Lead / Principal (10+ yrs)": 1
+        }
+      },
+      "top_hiring_companies": [
+        "Accenture",
+        "TCS",
+        "Cognizant",
+        "Fractal Analytics",
+        "Ab Inbev"
+      ],
+      "core_skills": [
+        "Python",
+        "Machine Learning",
+        "Deep Learning",
+        "Natural Language Processing",
+        "Statistics & Probability",
+        "Stakeholder Management"
+      ]
+    },
+    {
+      "role_title": "Senior Data Engineer",
+      "postings_count": 183,
+      "market_share_percent": 11.4,
+      "openings_represented": 3411,
+      "salary_metrics": {
+        "q25_lakhs": 14.5,
+        "median_lakhs": 17.6,
+        "q75_lakhs": 22.0,
+        "mean_lakhs": 19.0,
+        "min_salary_median": 12.5,
+        "max_salary_median": 23.0
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 4.6,
+        "median_min_exp_years": 4.0,
+        "tier_distribution": {
+          "Mid-Level (3-5 yrs)": 117,
+          "Senior-Level (6-9 yrs)": 43,
+          "Entry-Level (0-2 yrs)": 22,
+          "Lead / Principal (10+ yrs)": 1
+        }
+      },
+      "top_hiring_companies": [
+        "L&T Infotech",
+        "Quantiphi Analytics Solutions",
+        "IBM",
+        "Maersk",
+        "Optum"
+      ],
+      "core_skills": [
+        "Apache Spark",
+        "Python",
+        "Kafka",
+        "Data Warehousing",
+        "Snowflake",
+        "Cloud Architecture"
+      ]
+    },
+    {
+      "role_title": "Machine Learning Engineer",
+      "postings_count": 59,
+      "market_share_percent": 3.7,
+      "openings_represented": 964,
+      "salary_metrics": {
+        "q25_lakhs": 5.699999999999999,
+        "median_lakhs": 9.1,
+        "q75_lakhs": 12.3,
+        "mean_lakhs": 9.85,
+        "min_salary_median": 5.0,
+        "max_salary_median": 14.0
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 1.4,
+        "median_min_exp_years": 1.0,
+        "tier_distribution": {
+          "Entry-Level (0-2 yrs)": 49,
+          "Mid-Level (3-5 yrs)": 9,
+          "Senior-Level (6-9 yrs)": 1
+        }
+      },
+      "top_hiring_companies": [
+        "TCS",
+        "Quantiphi Analytics Solutions",
+        "Accenture",
+        "Wipro",
+        "Tiger Analytics"
+      ],
+      "core_skills": [
+        "Python",
+        "Machine Learning",
+        "Deep Learning",
+        "PyTorch",
+        "TensorFlow",
+        "MLOps",
+        "Docker & Containers"
+      ]
+    },
+    {
+      "role_title": "Data Architect",
+      "postings_count": 50,
+      "market_share_percent": 3.1,
+      "openings_represented": 528,
+      "salary_metrics": {
+        "q25_lakhs": 19.974999999999998,
+        "median_lakhs": 24.25,
+        "q75_lakhs": 28.9,
+        "mean_lakhs": 25.09,
+        "min_salary_median": 17.35,
+        "max_salary_median": 31.5
+      },
+      "experience_metrics": {
+        "mean_min_exp_years": 10.0,
+        "median_min_exp_years": 10.0,
+        "tier_distribution": {
+          "Lead / Principal (10+ yrs)": 26,
+          "Senior-Level (6-9 yrs)": 20,
+          "Mid-Level (3-5 yrs)": 4
+        }
+      },
+      "top_hiring_companies": [
+        "Accenture",
+        "TCS",
+        "Fiserv",
+        "IBM",
+        "Cognizant"
+      ],
+      "core_skills": [
+        "Data Warehousing",
+        "Cloud Architecture",
+        "Big Data",
+        "ETL Pipelines",
+        "Snowflake",
+        "Database Architecture"
+      ]
+    }
+  ]
+}

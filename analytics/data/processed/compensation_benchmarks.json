@@ -1,0 +1,133 @@
+{
+  "status": "success",
+  "provenance": "REAL DATA",
+  "generated_at": "2026-10-07T14:09:28.223508",
+  "salary_brackets": [
+    {
+      "bracket": "10 - 15 Lakhs",
+      "postings_count": 3608,
+      "market_share_percent": 22.78
+    },
+    {
+      "bracket": "15 - 25 Lakhs",
+      "postings_count": 3281,
+      "market_share_percent": 20.71
+    },
+    {
+      "bracket": "6 - 10 Lakhs",
+      "postings_count": 2876,
+      "market_share_percent": 18.16
+    },
+    {
+      "bracket": "0 - 3 Lakhs",
+      "postings_count": 2592,
+      "market_share_percent": 16.36
+    },
+    {
+      "bracket": "3 - 6 Lakhs",
+      "postings_count": 2239,
+      "market_share_percent": 14.13
+    },
+    {
+      "bracket": "25 - 50 Lakhs",
+      "postings_count": 1245,
+      "market_share_percent": 7.86
+    }
+  ],
+  "experience_tier_benchmarks": [
+    {
+      "experience_tier": "Entry-Level (0-2 yrs)",
+      "median_salary_lakhs": 8.9,
+      "q25_salary_lakhs": 5.9,
+      "q75_salary_lakhs": 12.625,
+      "mean_salary_lakhs": 9.73,
+      "sample_size": 884
+    },
+    {
+      "experience_tier": "Lead / Principal (10+ yrs)",
+      "median_salary_lakhs": 25.8,
+      "q25_salary_lakhs": 21.8,
+      "q75_salary_lakhs": 29.0,
+      "mean_salary_lakhs": 26.12,
+      "sample_size": 29
+    },
+    {
+      "experience_tier": "Mid-Level (3-5 yrs)",
+      "median_salary_lakhs": 14.6,
+      "q25_salary_lakhs": 11.1,
+      "q75_salary_lakhs": 19.4,
+      "mean_salary_lakhs": 15.76,
+      "sample_size": 549
+    },
+    {
+      "experience_tier": "Senior-Level (6-9 yrs)",
+      "median_salary_lakhs": 20.6,
+      "q25_salary_lakhs": 17.425,
+      "q75_salary_lakhs": 26.875,
+      "mean_salary_lakhs": 22.83,
+      "sample_size": 140
+    }
+  ],
+  "geographic_heatmaps": [
+    {
+      "city": "Bengaluru",
+      "postings_count": 3760,
+      "market_share_percent": 23.74,
+      "dominant_salary_bracket": "10 - 15 Lakhs"
+    },
+    {
+      "city": "Mumbai",
+      "postings_count": 2394,
+      "market_share_percent": 15.11,
+      "dominant_salary_bracket": "10 - 15 Lakhs"
+    },
+    {
+      "city": "Gurgaon",
+      "postings_count": 1582,
+      "market_share_percent": 9.99,
+      "dominant_salary_bracket": "10 - 15 Lakhs"
+    },
+    {
+      "city": "Delhi NCR",
+      "postings_count": 1543,
+      "market_share_percent": 9.74,
+      "dominant_salary_bracket": "10 - 15 Lakhs"
+    },
+    {
+      "city": "Pune",
+      "postings_count": 998,
+      "market_share_percent": 6.3,
+      "dominant_salary_bracket": "15 - 25 Lakhs"
+    },
+    {
+      "city": "Hyderabad",
+      "postings_count": 931,
+      "market_share_percent": 5.88,
+      "dominant_salary_bracket": "15 - 25 Lakhs"
+    },
+    {
+      "city": "Chennai",
+      "postings_count": 891,
+      "market_share_percent": 5.62,
+      "dominant_salary_bracket": "10 - 15 Lakhs"
+    },
+    {
+      "city": "Noida",
+      "postings_count": 423,
+      "market_share_percent": 2.67,
+      "dominant_salary_bracket": "10 - 15 Lakhs"
+    },
+    {
+      "city": "Ahmedabad",
+      "postings_count": 179,
+      "market_share_percent": 1.13,
+      "dominant_salary_bracket": "0 - 3 Lakhs"
+    },
+    {
+      "city": "Kolkata",
+      "postings_count": 175,
+      "market_share_percent": 1.1,
+      "dominant_salary_bracket": "0 - 3 Lakhs"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "model_name": "JDS Skill-Outcome Classifier (Logistic Regression & RF Ensemble)",
+  "target": "salary_hike_high_or_low",
+  "sample_size": 139,
+  "features": [
+    "big_data_skills",
+    "maths_stats_skills",
+    "coding_skills",
+    "ai_ml_skills",
+    "storytelling_skills"
+  ],
+  "cross_validation_5fold": {
+    "logistic_regression": {
+      "mean_accuracy": 0.8193,
+      "std_accuracy": 0.0747,
+      "mean_precision": 0.817,
+      "mean_recall": 0.8476,
+      "mean_f1": 0.8276,
+      "mean_roc_auc": 0.9043
+    },
+    "decision_tree": {
+      "mean_accuracy": 0.7984,
+      "mean_f1": 0.8135,
+      "mean_roc_auc": 0.8186
+    },
+    "random_forest": {
+      "mean_accuracy": 0.8267,
+      "mean_f1": 0.8328,
+      "mean_roc_auc": 0.8722
+    }
+  },
+  "test_set_metrics": {
+    "accuracy": 0.8929,
+    "precision": 0.875,
+    "recall": 0.9333,
+    "f1_score": 0.9032,
+    "roc_auc": 0.9667,
+    "confusion_matrix": [
+      [
+        11,
+        2
+      ],
+      [
+        1,
+        14
+      ]
+    ]
+  },
+  "feature_coefficients": {
+    "big_data_skills": {
+      "coefficient": 0.6282,
+      "odds_ratio": 1.8743,
+      "rf_importance": 0.1056,
+      "interpretation": "Each +1 SD increase in big_data_skills multiplies the odds of a high salary hike by 1.87x"
+    },
+    "maths_stats_skills": {
+      "coefficient": 1.2282,
+      "odds_ratio": 3.4151,
+      "rf_importance": 0.3014,
+      "interpretation": "Each +1 SD increase in maths_stats_skills multiplies the odds of a high salary hike by 3.42x"
+    },
+    "coding_skills": {
+      "coefficient": 0.478,
+      "odds_ratio": 1.6128,
+      "rf_importance": 0.1441,
+      "interpretation": "Each +1 SD increase in coding_skills multiplies the odds of a high salary hike by 1.61x"
+    },
+    "ai_ml_skills": {
+      "coefficient": 0.7844,
+      "odds_ratio": 2.1911,
+      "rf_importance": 0.1627,
+      "interpretation": "Each +1 SD increase in ai_ml_skills multiplies the odds of a high salary hike by 2.19x"
+    },
+    "storytelling_skills": {
+      "coefficient": 0.8558,
+      "odds_ratio": 2.3531,
+      "rf_importance": 0.2861,
+      "interpretation": "Each +1 SD increase in storytelling_skills multiplies the odds of a high salary hike by 2.35x"
+    }
+  },
+  "inference_weights": {
+    "features": [
+      "big_data_skills",
+      "maths_stats_skills",
+      "coding_skills",
+      "ai_ml_skills",
+      "storytelling_skills"
+    ],
+    "scaler_mean": [
+      3.8496402877697844,
+      4.293525179856115,
+      4.2683453237410065,
+      4.566187050359712,
+      4.355395683453238
+    ],
+    "scaler_scale": [
+      0.8435428968396037,
+      0.8408807161912906,
+      0.8897526914679917,
+      0.6646851320169521,
+      0.9296996236404503
+    ],
+    "coefficients": [
+      0.6282255253860495,
+      1.2281961969092223,
+      0.4779753718353819,
+      0.7843831566252792,
+      0.8557533140222543
+    ],
+    "intercept": -0.1362833122454153
+  }
+}
