@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { Search, ArrowRight, Zap, CheckCircle2, ShieldCheck, Database, Layers } from 'lucide-react'
 import { mockMarketData, TrackedSkill } from '../data/mockData'
-import { getTrendColor, getTrendIcon } from '../lib/utils'
+import { getTrendColor } from '../lib/utils'
 import { useTheme } from '../hooks/useTheme'
 import { cn } from '../lib/utils'
 import { api } from '../services/api'
@@ -82,8 +81,8 @@ export const SkillIntelligence: React.FC<SkillIntelligenceProps> = ({ onNavigate
             <div className="flex items-center gap-2 mb-2">
               <span className="stamp-live">SKILL RADAR</span>
               <span className="text-xs font-mono text-warm-ivory/60">OPERATION // SKILL-VELOCITY-TELEMETRY</span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                <ShieldCheck size={12} /> REAL DATA
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                REAL DATA
               </span>
             </div>
             <h1 className="heading-lg text-warm-ivory mb-1">SKILL INTELLIGENCE & VELOCITY</h1>
@@ -95,7 +94,7 @@ export const SkillIntelligence: React.FC<SkillIntelligenceProps> = ({ onNavigate
             onClick={() => onNavigate?.('skill-heist')}
             className="btn-primary flex items-center gap-2 text-xs font-mono py-2.5 px-4"
           >
-            START SKILL HEIST <ArrowRight size={14} />
+            START SKILL HEIST →
           </button>
         </div>
       </section>
@@ -103,13 +102,12 @@ export const SkillIntelligence: React.FC<SkillIntelligenceProps> = ({ onNavigate
       {/* Search Filter */}
       <section>
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-warm-ivory/40" size={18} />
           <input
             type="text"
             placeholder="Search tracked skills (SQL, Python, SAS, Machine Learning, Power BI, AWS, PySpark)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 bg-charcoal border border-burgundy/30 rounded-lg text-warm-ivory placeholder-warm-ivory/40 font-mono text-xs outline-none focus:border-crimson focus:ring-1 focus:ring-crimson/50 transition-all"
+            className="w-full px-4 py-3 bg-charcoal border border-burgundy/30 rounded-lg text-warm-ivory placeholder-warm-ivory/40 font-mono text-xs outline-none focus:border-crimson focus:ring-1 focus:ring-crimson/50 transition-all"
           />
         </div>
       </section>
@@ -145,7 +143,7 @@ export const SkillIntelligence: React.FC<SkillIntelligenceProps> = ({ onNavigate
                 </div>
                 <div className="text-right">
                   <span className={cn('text-xs font-mono font-bold', getTrendColor(skill.trend))}>
-                    {getTrendIcon(skill.trend)} {skill.trend}
+                    {skill.trend}
                   </span>
                 </div>
               </div>
@@ -189,7 +187,7 @@ export const SkillIntelligence: React.FC<SkillIntelligenceProps> = ({ onNavigate
               </div>
               <div className="text-right">
                 <span className={cn('text-sm font-mono font-bold px-2.5 py-1 rounded bg-burgundy/20 border border-burgundy/30', getTrendColor(selectedSkill.trend))}>
-                  {getTrendIcon(selectedSkill.trend)} {selectedSkill.trend}
+                  {selectedSkill.trend}
                 </span>
               </div>
             </div>
@@ -222,7 +220,6 @@ export const SkillIntelligence: React.FC<SkillIntelligenceProps> = ({ onNavigate
                       key={pair}
                       className="px-2 py-1 bg-burgundy/20 text-xs font-mono text-warm-ivory/80 rounded border border-burgundy/30 flex items-center gap-1"
                     >
-                      <CheckCircle2 size={10} className="text-emerald-400" />
                       {pair}
                     </span>
                   ))}
@@ -273,7 +270,6 @@ export const SkillIntelligence: React.FC<SkillIntelligenceProps> = ({ onNavigate
       {/* Emerging Next-Gen Skills */}
       <section className="card bg-gradient-obsidian border-emerald-400/30">
         <div className="flex items-center gap-2 mb-4">
-          <Zap size={18} className="text-emerald-400" />
           <h3 className="heading-sm text-emerald-400 font-mono text-sm">
             EMERGING BREAKTHROUGH SKILLS // 6-MONTH HORIZON
           </h3>

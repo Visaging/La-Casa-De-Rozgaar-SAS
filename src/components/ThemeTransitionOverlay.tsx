@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../hooks/useTheme'
-import { Shield, Briefcase } from 'lucide-react'
 
 export const ThemeTransitionOverlay: React.FC = () => {
   const { isTransitioning, transitionDirection } = useTheme()
@@ -58,7 +57,6 @@ export const ThemeTransitionOverlay: React.FC = () => {
               transition={{ duration: 0.18 }}
               className="absolute bottom-5 right-5 pointer-events-none px-3 py-1.5 rounded-lg bg-white/95 text-slate-900 border border-slate-200 shadow-lg font-sans text-xs font-semibold flex items-center gap-2"
             >
-              <Briefcase size={13} className="text-blue-600 shrink-0" />
               <span className="text-[11px] font-medium text-slate-700">ENTERPRISE MODE ACTIVE</span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             </motion.div>
@@ -94,7 +92,6 @@ export const ThemeTransitionOverlay: React.FC = () => {
               transition={{ duration: 0.18 }}
               className="absolute bottom-5 right-5 pointer-events-none px-3 py-1.5 rounded-lg bg-[#151518]/95 text-warm-ivory border border-crimson/50 shadow-glow-crimson font-mono text-xs font-bold flex items-center gap-2"
             >
-              <Shield size={13} className="text-crimson shrink-0" />
               <span className="text-[11px] font-mono tracking-wider text-warm-ivory">HEIST MODE // ARMED</span>
               <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-ping" />
             </motion.div>

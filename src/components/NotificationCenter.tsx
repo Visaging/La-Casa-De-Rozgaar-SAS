@@ -1,5 +1,4 @@
 import { useState, useEffect, type FC } from 'react'
-import { X, Bell, Zap, TrendingUp, Briefcase, BookOpen, Check, Trash2 } from 'lucide-react'
 import { useTheme } from '../hooks/useTheme'
 import { cn } from '../lib/utils'
 import { api } from '../services/api'
@@ -105,21 +104,6 @@ export const NotificationCenter: FC<NotificationCenterProps> = ({ isOpen, onClos
     onClose()
   }
 
-  const getIcon = (cat: string) => {
-    switch (cat) {
-      case 'SKILL':
-        return <Zap size={14} className={isHeist ? 'text-emerald-400' : 'text-emerald-600'} />
-      case 'MARKET':
-        return <TrendingUp size={14} className={isHeist ? 'text-crimson' : 'text-red-600'} />
-      case 'CAREER':
-        return <Briefcase size={14} className={isHeist ? 'text-blue-400' : 'text-blue-600'} />
-      case 'LEARNING':
-        return <BookOpen size={14} className={isHeist ? 'text-amber-400' : 'text-amber-600'} />
-      default:
-        return <Bell size={14} />
-    }
-  }
-
   const unreadCount = notifications.filter((n) => n.unread).length
 
   return (
@@ -140,7 +124,6 @@ export const NotificationCenter: FC<NotificationCenterProps> = ({ isOpen, onClos
           )}
         >
           <div className="flex items-center gap-2.5">
-            <Bell size={18} className={isHeist ? 'text-crimson' : 'text-slate-700'} />
             <h3
               className={cn(
                 'text-base font-bold',
@@ -164,9 +147,12 @@ export const NotificationCenter: FC<NotificationCenterProps> = ({ isOpen, onClos
           </div>
           <button
             onClick={onClose}
-            className={isHeist ? 'text-warm-ivory/40 hover:text-crimson p-1' : 'text-slate-400 hover:text-slate-700 p-1'}
+            className={cn(
+              'px-2 py-1 text-xs font-mono rounded cursor-pointer transition-colors',
+              isHeist ? 'text-warm-ivory/60 hover:text-crimson hover:bg-burgundy/20' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100'
+            )}
           >
-            <X size={18} />
+            CLOSE
           </button>
         </div>
 
@@ -183,21 +169,21 @@ export const NotificationCenter: FC<NotificationCenterProps> = ({ isOpen, onClos
             onClick={markAllRead}
             disabled={unreadCount === 0}
             className={cn(
-              'disabled:opacity-40 transition-colors flex items-center gap-1',
+              'disabled:opacity-40 transition-colors',
               isHeist ? 'hover:text-warm-ivory' : 'hover:text-slate-900'
             )}
           >
-            <Check size={12} /> Mark all read
+            Mark all read
           </button>
           <button
             onClick={clearAll}
             disabled={notifications.length === 0}
             className={cn(
-              'disabled:opacity-40 transition-colors flex items-center gap-1',
+              'disabled:opacity-40 transition-colors',
               isHeist ? 'hover:text-crimson' : 'hover:text-red-600'
             )}
           >
-            <Trash2 size={12} /> Clear wire
+            Clear wire
           </button>
         </div>
 
@@ -226,9 +212,11 @@ export const NotificationCenter: FC<NotificationCenterProps> = ({ isOpen, onClos
                   )}
                 >
                   <span className="flex items-center gap-1 font-bold">
-                    {getIcon(item.category)}
+                    <span className={isHeist ? 'text-crimson' : 'text-blue-600'}>
+                      [{item.category}]
+                    </span>
                     <span className={isHeist ? 'text-warm-ivory' : 'text-slate-800'}>
-                      {item.category} ALERT
+                      ALERT
                     </span>
                   </span>
                   <span className={isHeist ? 'text-warm-ivory/40' : 'text-slate-500'}>

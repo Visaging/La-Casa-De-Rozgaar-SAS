@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { Zap, Target, ArrowRight, Eye, User, Brain, TrendingUp, TrendingDown, Info, ChevronRight } from 'lucide-react'
 import { mockMarketData } from '../data/mockData'
 import { formatNumber, getTrendColor } from '../lib/utils'
 import { cn } from '../lib/utils'
@@ -271,9 +270,6 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
           >
             <div className="text-[11px] font-medium text-slate-500 tracking-normal flex items-center justify-between">
               <span>{kpi.label}</span>
-              <span className="text-slate-300" title={kpi.tooltip}>
-                <Info size={12} />
-              </span>
             </div>
             <div className="text-2xl font-bold text-slate-900 tracking-tight">
               {kpi.value}
@@ -281,11 +277,10 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
             <div className="text-[11px] flex items-center gap-1.5 text-slate-500">
               <span
                 className={cn(
-                  'font-semibold flex items-center',
+                  'font-semibold',
                   kpi.trendUp ? 'text-emerald-700' : 'text-amber-700'
                 )}
               >
-                {kpi.trendUp ? <TrendingUp size={12} className="mr-0.5 inline" /> : <TrendingDown size={12} className="mr-0.5 inline" />}
                 {kpi.trend}
               </span>
               <span>{kpi.period}</span>
@@ -311,9 +306,9 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
             </div>
             <button
               onClick={() => onNavigate?.('skill-intelligence')}
-              className="text-xs font-semibold text-blue-700 hover:text-blue-900 inline-flex items-center gap-1 self-start transition-colors"
+              className="text-xs font-semibold text-blue-700 hover:text-blue-900 self-start transition-colors"
             >
-              Skill Intelligence <ArrowRight size={13} />
+              Skill Intelligence →
             </button>
           </div>
 
@@ -328,9 +323,9 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
             </div>
             <button
               onClick={() => onNavigate?.('role-intelligence')}
-              className="text-xs font-semibold text-blue-700 hover:text-blue-900 inline-flex items-center gap-1 self-start transition-colors cursor-pointer"
+              className="text-xs font-semibold text-blue-700 hover:text-blue-900 self-start transition-colors cursor-pointer"
             >
-              Explore Role Intelligence <ArrowRight size={13} />
+              Explore Role Intelligence →
             </button>
           </div>
 
@@ -345,9 +340,9 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
             </div>
             <button
               onClick={() => onNavigate?.('market-intelligence')}
-              className="text-xs font-semibold text-blue-700 hover:text-blue-900 inline-flex items-center gap-1 self-start transition-colors cursor-pointer"
+              className="text-xs font-semibold text-blue-700 hover:text-blue-900 self-start transition-colors cursor-pointer"
             >
-              Macro Market Radar <ArrowRight size={13} />
+              Macro Market Radar →
             </button>
           </div>
         </div>
@@ -470,9 +465,9 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
           </div>
           <button
             onClick={() => onNavigate?.('skill-intelligence')}
-            className="text-xs font-semibold text-blue-700 hover:text-blue-900 flex items-center gap-1 self-start sm:self-auto"
+            className="text-xs font-semibold text-blue-700 hover:text-blue-900 self-start sm:self-auto"
           >
-            Open Skill Intelligence <ArrowRight size={13} />
+            Open Skill Intelligence →
           </button>
         </div>
 
@@ -547,9 +542,9 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
           </div>
           <button
             onClick={() => onNavigate?.('market-intelligence')}
-            className="text-xs font-semibold text-blue-700 hover:text-blue-900 flex items-center gap-1 self-start sm:self-auto"
+            className="text-xs font-semibold text-blue-700 hover:text-blue-900 self-start sm:self-auto"
           >
-            View Market Intelligence <ArrowRight size={13} />
+            View Market Intelligence →
           </button>
         </div>
 
@@ -588,7 +583,7 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
                       onClick={() => onNavigate?.('role-intelligence')}
                       className="text-blue-700 hover:text-blue-900 font-medium hover:underline inline-flex items-center gap-0.5"
                     >
-                      Inspect <ChevronRight size={13} />
+                      Inspect →
                     </button>
                   </td>
                 </tr>
@@ -648,7 +643,7 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
               onClick={() => onNavigate?.('market-intelligence')}
               className="btn-primary flex items-center gap-2 text-xs font-mono py-2.5 px-4 cursor-pointer"
             >
-              MARKET INTELLIGENCE <ArrowRight size={14} />
+              MARKET INTELLIGENCE →
             </button>
             <button
               onClick={() => onNavigate?.('skill-intelligence')}
@@ -676,7 +671,6 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
         <div className="card">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] text-warm-ivory/60 font-mono">JOBS ANALYZED</span>
-            <Zap size={16} className="text-crimson" />
           </div>
           <p className="heading-md text-warm-ivory font-mono">17,443</p>
           <p className="text-[11px] text-emerald-400 font-mono mt-1">Real Competition Dataset</p>
@@ -685,7 +679,6 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
         <div className="card">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] text-warm-ivory/60 font-mono">ESTIMATED OPENINGS</span>
-            <Target size={16} className="text-amber-400" />
           </div>
           <p className="heading-md text-warm-ivory font-mono">1.09 Lakh</p>
           <p className="text-[11px] text-warm-ivory/50 font-mono mt-1">108,846 Positions Represented</p>
@@ -694,7 +687,6 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
         <div className="card">
           <div className="flex items-center justify-between mb-2">
             <span className="text-[11px] text-warm-ivory/60 font-mono">CANONICAL SKILLS TRACKED</span>
-            <Brain size={16} className="text-blue-400" />
           </div>
           <p className="heading-md text-warm-ivory font-mono">8,208</p>
           <p className="text-[11px] text-emerald-400 font-mono mt-1">Normalized Taxonomy</p>
@@ -768,7 +760,7 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
               onClick={() => onNavigate?.('role-intelligence')}
               className="text-xs font-mono text-crimson hover:underline flex items-center gap-1 self-start sm:self-auto"
             >
-              Open Role Dossier <ArrowRight size={12} />
+              Open Role Dossier →
             </button>
           </div>
 
@@ -832,7 +824,7 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
             onClick={() => onNavigate?.('skill-intelligence')}
             className="text-xs font-mono text-crimson hover:underline flex items-center gap-1"
           >
-            Explore All Tracked Tech <ArrowRight size={12} />
+            Explore All Tracked Tech →
           </button>
         </div>
 

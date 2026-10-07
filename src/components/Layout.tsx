@@ -1,14 +1,5 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Menu,
-  X,
-  Search,
-  Bell,
-  ChevronDown,
-  Building2,
-  Check,
-} from 'lucide-react'
 import { useTheme } from '../hooks/useTheme'
 import { useWindowSize } from '../hooks/useWindowSize'
 import { ThemeModeSwitch } from './ThemeModeSwitch'
@@ -152,9 +143,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onNavigate, c
               </button>
               <button
                 onClick={onClose}
-                className="md:hidden text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100"
+                className="md:hidden text-slate-400 hover:text-slate-700 p-1 text-xs font-mono rounded hover:bg-slate-100"
               >
-                <X size={18} />
+                ✕
               </button>
             </div>
           </div>
@@ -245,9 +236,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onNavigate, c
             </button>
             <button
               onClick={onClose}
-              className="md:hidden text-warm-ivory/60 hover:text-crimson p-1 rounded-lg hover:bg-burgundy/20 transition-colors"
+              className="md:hidden text-warm-ivory/60 hover:text-crimson p-1 text-xs font-mono rounded-lg hover:bg-burgundy/20 transition-colors"
             >
-              <X size={20} />
+              ✕
             </button>
           </div>
         </div>
@@ -272,13 +263,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onNavigate, c
                     )}
                   >
                     <span className="tracking-wider uppercase">{item.label}</span>
-                    <ChevronDown
-                      size={14}
+                    <span
                       className={cn(
-                        'transition-transform duration-200 text-warm-ivory/40',
+                        'text-[10px] transition-transform duration-200 text-warm-ivory/40',
                         isExpanded ? 'rotate-180 text-crimson' : ''
                       )}
-                    />
+                    >
+                      ▾
+                    </span>
                   </button>
                 ) : (
                   <button
@@ -415,10 +407,10 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center gap-3">
             <button
               onClick={onMenuClick}
-              className="md:hidden text-slate-500 hover:text-slate-900 p-1.5 -ml-1 rounded hover:bg-slate-100"
+              className="md:hidden text-xs font-mono font-bold text-slate-600 hover:text-slate-900 px-2 py-1 rounded hover:bg-slate-100"
               aria-label="Toggle navigation menu"
             >
-              {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+              {sidebarOpen ? '✕' : 'MENU'}
             </button>
 
             <div>
@@ -438,7 +430,6 @@ export const Header: React.FC<HeaderProps> = ({
               className="w-full flex items-center justify-between px-3 py-1.5 bg-slate-50 rounded-md border border-slate-200 hover:border-slate-300 text-slate-500 text-xs transition-colors"
             >
               <div className="flex items-center gap-2">
-                <Search size={14} className="text-slate-400 shrink-0" />
                 <span className="truncate">Search candidates, skills, roles, reports...</span>
               </div>
               <kbd className="px-1.5 py-0.5 text-[10px] bg-white text-slate-600 rounded border border-slate-200 font-mono shadow-2xs">
@@ -455,9 +446,8 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => setWorkspaceMenuOpen(!workspaceMenuOpen)}
                 className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 rounded border border-slate-200 transition-colors"
               >
-                <Building2 size={13} className="text-slate-500" />
                 <span>{selectedWorkspace}</span>
-                <ChevronDown size={13} className="text-slate-400" />
+                <span className="text-slate-400 text-[10px]">▾</span>
               </button>
 
               {workspaceMenuOpen && (
@@ -475,7 +465,7 @@ export const Header: React.FC<HeaderProps> = ({
                       className="w-full text-left px-3 py-1.5 hover:bg-slate-50 flex items-center justify-between text-slate-700"
                     >
                       <span>{ws}</span>
-                      {selectedWorkspace === ws && <Check size={12} className="text-blue-600" />}
+                      {selectedWorkspace === ws && <span className="text-blue-600 font-bold">✓</span>}
                     </button>
                   ))}
                 </div>
@@ -488,11 +478,11 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Notifications Trigger */}
             <button
               onClick={onOpenNotifications}
-              className="relative p-2 text-slate-500 hover:text-slate-800 rounded hover:bg-slate-100 transition-colors cursor-pointer"
+              className="relative px-2.5 py-1 text-xs font-medium text-slate-600 hover:text-slate-900 rounded hover:bg-slate-100 transition-colors cursor-pointer flex items-center gap-1"
               title="Notifications"
             >
-              <Bell size={17} />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600" />
+              <span>ALERTS</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
             </button>
           </div>
         </div>
@@ -512,10 +502,10 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3">
           <button
             onClick={onMenuClick}
-            className="md:hidden text-warm-ivory/80 hover:text-crimson p-1.5 -ml-1 rounded-lg hover:bg-burgundy/20"
+            className="md:hidden text-xs font-mono font-bold text-warm-ivory/80 hover:text-crimson px-2 py-1 rounded-lg hover:bg-burgundy/20"
             aria-label="Toggle navigation menu"
           >
-            {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+            {sidebarOpen ? '✕' : 'MENU'}
           </button>
 
           <button onClick={() => onNavigate('war-room')} className="hidden sm:block text-left group">
@@ -535,7 +525,6 @@ export const Header: React.FC<HeaderProps> = ({
             className="w-full flex items-center justify-between px-3.5 py-2 bg-[#17171B] rounded-lg border border-[#2C2C34] hover:border-crimson/70 text-white text-xs font-mono transition-all shadow-sm group header-search-box"
           >
             <div className="flex items-center gap-2.5">
-              <Search size={14} className="text-crimson shrink-0 header-search-icon" />
               <span className="text-[#E0E0EA] group-hover:text-white transition-colors truncate header-search-text">
                 Search intelligence, candidates, jobs...
               </span>
@@ -557,18 +546,17 @@ export const Header: React.FC<HeaderProps> = ({
             className="md:hidden flex items-center gap-1.5 px-2.5 py-1.5 bg-[#17171B] border border-[#2C2C34] rounded-lg text-white hover:text-crimson transition-colors header-search-box"
             aria-label="Open search palette"
           >
-            <Search size={15} className="text-crimson header-search-icon" />
             <span className="text-[10px] font-mono text-[#D0D0DC] font-semibold header-search-text">SEARCH</span>
           </button>
 
           {/* Notifications Trigger */}
           <button
             onClick={onOpenNotifications}
-            className="relative p-2 text-warm-ivory/70 hover:text-crimson rounded-lg hover:bg-burgundy/20 transition-colors header-bell-btn cursor-pointer"
+            className="relative px-2.5 py-1 text-xs font-mono text-warm-ivory/80 hover:text-crimson rounded-lg hover:bg-burgundy/20 transition-colors header-bell-btn cursor-pointer flex items-center gap-1.5"
             title="Intelligence Alerts"
           >
-            <Bell size={18} />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-crimson animate-pulse" />
+            <span className="text-[11px] font-bold">ALERTS</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-crimson animate-pulse" />
           </button>
         </div>
       </div>

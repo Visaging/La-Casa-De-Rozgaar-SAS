@@ -1,5 +1,4 @@
 import React from 'react'
-import { Shield, Briefcase } from 'lucide-react'
 import { useTheme, type VisualMode } from '../hooks/useTheme'
 import { cn } from '../lib/utils'
 
@@ -41,14 +40,13 @@ export const ThemeModeSwitch: React.FC<ThemeModeSwitchProps> = ({
           type="button"
           onClick={() => handleSelect('heist')}
           className={cn(
-            'relative z-10 flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-md transition-all duration-150 cursor-pointer',
+            'relative z-10 flex items-center px-2.5 py-1 text-xs rounded-md transition-all duration-150 cursor-pointer',
             isHeist
               ? 'bg-gradient-crimson text-white font-mono font-bold shadow-glow-crimson'
               : 'text-slate-500 hover:text-slate-800 dark:text-warm-ivory/60 dark:hover:text-warm-ivory font-mono'
           )}
           title="Switch to Heist Mode (Money Heist Classified Operations)"
         >
-          <Shield size={12} className={cn(isHeist ? 'text-white' : 'text-crimson/70')} />
           <span className="tracking-wider uppercase text-[11px]">HEIST</span>
         </button>
 
@@ -57,14 +55,13 @@ export const ThemeModeSwitch: React.FC<ThemeModeSwitchProps> = ({
           type="button"
           onClick={() => handleSelect('professional')}
           className={cn(
-            'relative z-10 flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-md transition-all duration-150 cursor-pointer',
+            'relative z-10 flex items-center px-2.5 py-1 text-xs rounded-md transition-all duration-150 cursor-pointer',
             isProfessional
               ? 'bg-white text-slate-900 font-sans font-semibold shadow-sm border border-slate-200/80'
               : 'text-warm-ivory/60 hover:text-warm-ivory font-sans'
           )}
           title="Switch to Professional Mode (Enterprise Talent Intelligence)"
         >
-          <Briefcase size={12} className={cn(isProfessional ? 'text-slate-800' : 'text-slate-400')} />
           <span className="text-[11px]">PROFESSIONAL</span>
         </button>
       </div>
@@ -116,8 +113,7 @@ export const ThemeModeSwitch: React.FC<ThemeModeSwitchProps> = ({
               : 'text-warm-ivory/60 hover:text-warm-ivory hover:bg-white/5'
           )}
         >
-          <div className="flex items-center gap-1.5 font-mono text-xs font-bold tracking-wider uppercase">
-            <Shield size={12} className={isHeist ? 'text-white' : 'text-crimson'} />
+          <div className="font-mono text-xs font-bold tracking-wider uppercase">
             <span>HEIST</span>
           </div>
           <span
@@ -141,8 +137,7 @@ export const ThemeModeSwitch: React.FC<ThemeModeSwitchProps> = ({
               : 'text-warm-ivory/60 hover:text-warm-ivory hover:bg-white/5'
           )}
         >
-          <div className="flex items-center gap-1.5 font-sans text-xs font-semibold">
-            <Briefcase size={12} className={isProfessional ? 'text-slate-800' : 'text-slate-400'} />
+          <div className="font-sans text-xs font-semibold">
             <span>PRO</span>
           </div>
           <span

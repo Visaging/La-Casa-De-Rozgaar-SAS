@@ -1,5 +1,4 @@
-import { useState, useEffect, useMemo, type ReactNode, type FC } from 'react'
-import { Search, X, Zap, Briefcase, CornerDownLeft, Sparkles, Layers } from 'lucide-react'
+import { useState, useEffect, useMemo, type FC } from 'react'
 import { mockMarketData } from '../data/mockData'
 import { useTheme } from '../hooks/useTheme'
 import { cn } from '../lib/utils'
@@ -16,7 +15,6 @@ interface PaletteItem {
   subtitle: string
   category: 'NAVIGATION' | 'SKILLS'
   pageTarget: string
-  icon: ReactNode
 }
 
 export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNavigate }) => {
@@ -51,17 +49,16 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
           : 'Arm classified Money Heist tactical intelligence command center',
         category: 'NAVIGATION',
         pageTarget: isHeist ? '__theme:professional' : '__theme:heist',
-        icon: isHeist ? <Briefcase size={14} className="text-blue-400" /> : <Zap size={14} className="text-crimson" />,
       },
     ]
 
     const allPages: PaletteItem[] = [
-      { id: 'p-landing', title: isHeist ? 'Classified Briefing // 3D Landing Experience' : 'Platform Overview & 3D Briefing', subtitle: 'Experience the 3D briefing room, tactical dossier, and operation intro', category: 'NAVIGATION', pageTarget: 'landing', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-1', title: isHeist ? 'War Room Command' : 'Executive Overview', subtitle: 'Macro Overview & Intelligence Pulse', category: 'NAVIGATION', pageTarget: 'war-room', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-2', title: isHeist ? 'Market Intelligence Radar' : 'Market Demand Dynamics', subtitle: 'Hiring Volume, Velocity & Geo Analysis', category: 'NAVIGATION', pageTarget: 'market-intelligence', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-3', title: isHeist ? 'Skill Intelligence Radar' : 'Skill Analytics & Adoption', subtitle: 'Canonical Skills & Co-occurrence Network', category: 'NAVIGATION', pageTarget: 'skill-intelligence', icon: <Layers size={14} className="text-crimson" /> },
-      { id: 'p-4', title: isHeist ? 'Role Intelligence Dossiers' : 'Role Competencies', subtitle: 'Standardized Role Families & Pathways', category: 'NAVIGATION', pageTarget: 'role-intelligence', icon: <Briefcase size={14} className="text-crimson" /> },
-      { id: 'p-12', title: 'Simulation Vault (ML Models)', subtitle: 'JDS Salary & SDS Leadership ML Inference', category: 'NAVIGATION', pageTarget: 'simulation', icon: <Sparkles size={14} className="text-emerald-400" /> },
+      { id: 'p-landing', title: isHeist ? 'Classified Briefing // 3D Landing Experience' : 'Platform Overview & 3D Briefing', subtitle: 'Experience the 3D briefing room, tactical dossier, and operation intro', category: 'NAVIGATION', pageTarget: 'landing' },
+      { id: 'p-1', title: isHeist ? 'War Room Command' : 'Executive Overview', subtitle: 'Macro Overview & Intelligence Pulse', category: 'NAVIGATION', pageTarget: 'war-room' },
+      { id: 'p-2', title: isHeist ? 'Market Intelligence Radar' : 'Market Demand Dynamics', subtitle: 'Hiring Volume, Velocity & Geo Analysis', category: 'NAVIGATION', pageTarget: 'market-intelligence' },
+      { id: 'p-3', title: isHeist ? 'Skill Intelligence Radar' : 'Skill Analytics & Adoption', subtitle: 'Canonical Skills & Co-occurrence Network', category: 'NAVIGATION', pageTarget: 'skill-intelligence' },
+      { id: 'p-4', title: isHeist ? 'Role Intelligence Dossiers' : 'Role Competencies', subtitle: 'Standardized Role Families & Pathways', category: 'NAVIGATION', pageTarget: 'role-intelligence' },
+      { id: 'p-12', title: 'Simulation Vault (ML Models)', subtitle: 'JDS Salary & SDS Leadership ML Inference', category: 'NAVIGATION', pageTarget: 'simulation' },
     ]
 
     const skills: PaletteItem[] = mockMarketData.topSkills.map((s) => ({
@@ -70,7 +67,6 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
       subtitle: `${s.demand}% Market Share • Momentum: ${s.trend}`,
       category: 'SKILLS',
       pageTarget: 'skill-intelligence',
-      icon: <Zap size={14} className="text-crimson" />,
     }))
 
     return [...themeCommands, ...allPages, ...skills]
@@ -139,7 +135,9 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
             isHeist ? 'border-burgundy/30 bg-obsidian/70' : 'border-slate-200 bg-slate-50'
           )}
         >
-          <Search size={18} className={isHeist ? 'text-crimson' : 'text-slate-600'} />
+          <span className={cn('text-xs font-mono font-bold', isHeist ? 'text-crimson' : 'text-slate-500')}>
+            FIND
+          </span>
           <input
             type="text"
             autoFocus
@@ -172,9 +170,12 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
           </kbd>
           <button
             onClick={onClose}
-            className={isHeist ? 'text-warm-ivory/40 hover:text-crimson' : 'text-slate-400 hover:text-slate-700'}
+            className={cn(
+              'px-2 py-0.5 text-xs font-mono rounded transition-colors',
+              isHeist ? 'text-warm-ivory/50 hover:text-crimson' : 'text-slate-400 hover:text-slate-700'
+            )}
           >
-            <X size={18} />
+            ✕
           </button>
         </div>
 
@@ -199,33 +200,23 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
                       : 'border-transparent text-slate-700 hover:bg-slate-50 font-sans'
                   )}
                 >
-                  <div className="flex items-center gap-3">
-                    <span
+                  <div>
+                    <p
                       className={cn(
-                        'p-1.5 rounded',
-                        isHeist ? 'bg-burgundy/20' : 'bg-slate-100 border border-slate-200'
+                        'text-sm leading-tight',
+                        isHeist ? 'text-warm-ivory font-semibold' : 'text-slate-900 font-semibold'
                       )}
                     >
-                      {item.icon}
-                    </span>
-                    <div>
-                      <p
-                        className={cn(
-                          'text-sm leading-tight',
-                          isHeist ? 'text-warm-ivory font-semibold' : 'text-slate-900 font-semibold'
-                        )}
-                      >
-                        {item.title}
-                      </p>
-                      <p
-                        className={cn(
-                          'text-[11px] mt-0.5',
-                          isHeist ? 'text-warm-ivory/50 font-mono' : 'text-slate-500 font-sans'
-                        )}
-                      >
-                        {item.subtitle}
-                      </p>
-                    </div>
+                      {item.title}
+                    </p>
+                    <p
+                      className={cn(
+                        'text-[11px] mt-0.5',
+                        isHeist ? 'text-warm-ivory/50 font-mono' : 'text-slate-500 font-sans'
+                      )}
+                    >
+                      {item.subtitle}
+                    </p>
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -240,7 +231,9 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
                       {item.category}
                     </span>
                     {isSelected && (
-                      <CornerDownLeft size={14} className={isHeist ? 'text-crimson' : 'text-slate-600'} />
+                      <span className={cn('text-[10px] font-mono', isHeist ? 'text-crimson' : 'text-slate-600')}>
+                        ↵
+                      </span>
                     )}
                   </div>
                 </button>

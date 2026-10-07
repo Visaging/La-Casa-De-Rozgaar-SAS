@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { ArrowRight, ShieldCheck, Compass, CheckCircle2 } from 'lucide-react'
 import { mockRoleDossiers } from '../data/mockData'
 import { formatNumber, cn } from '../lib/utils'
 
@@ -21,8 +20,8 @@ export const RoleIntelligence: React.FC<RoleIntelligenceProps> = ({ onNavigate }
             <div className="flex items-center gap-2 mb-2">
               <span className="stamp-live">LIVE INTELLIGENCE</span>
               <span className="text-xs font-mono text-warm-ivory/60">OPERATION // ROLE-INTEL-08</span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                <ShieldCheck size={12} /> REAL DATA
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                REAL DATA
               </span>
             </div>
             <h1 className="heading-lg text-warm-ivory mb-1">ROLE INTELLIGENCE DOSSIERS</h1>
@@ -35,7 +34,7 @@ export const RoleIntelligence: React.FC<RoleIntelligenceProps> = ({ onNavigate }
               onClick={() => onNavigate?.('job-finder')}
               className="btn-primary text-xs font-mono py-2.5 px-4 flex items-center gap-2"
             >
-              LOCATE OPEN ROLES <ArrowRight size={14} />
+              LOCATE OPEN ROLES →
             </button>
           </div>
         </div>
@@ -130,7 +129,6 @@ export const RoleIntelligence: React.FC<RoleIntelligenceProps> = ({ onNavigate }
                     key={pref.name}
                     className="px-3 py-1 bg-burgundy/20 border border-burgundy/40 rounded text-xs font-mono text-warm-ivory/90 flex items-center gap-1.5"
                   >
-                    <CheckCircle2 size={12} className="text-emerald-400" />
                     {pref.name} ({pref.weight}%)
                   </span>
                 ))}
@@ -165,7 +163,6 @@ export const RoleIntelligence: React.FC<RoleIntelligenceProps> = ({ onNavigate }
           {/* Career Transition Pathways */}
           <div className="card bg-charcoal/80 border-burgundy/30">
             <div className="flex items-center gap-2 mb-3">
-              <Compass size={18} className="text-crimson" />
               <h3 className="heading-sm text-warm-ivory font-mono text-sm">NATURAL CAREER VECTORS</h3>
             </div>
             <p className="text-[11px] font-mono text-warm-ivory/60 mb-4">
@@ -190,7 +187,6 @@ export const RoleIntelligence: React.FC<RoleIntelligenceProps> = ({ onNavigate }
           {/* 5-Year Industry Outlook */}
           <div className="card bg-emerald-400/5 border-emerald-400/30">
             <div className="flex items-center gap-2 mb-2">
-              <ShieldCheck size={16} className="text-emerald-400" />
               <h3 className="heading-sm text-emerald-400 font-mono text-sm">5-YEAR MACRO OUTLOOK</h3>
             </div>
             <p className="text-xs font-mono text-warm-ivory/80 leading-relaxed mb-4">
@@ -209,7 +205,7 @@ export const RoleIntelligence: React.FC<RoleIntelligenceProps> = ({ onNavigate }
               onClick={() => onNavigate?.('skill-heist')}
               className="w-full btn-secondary text-xs font-mono py-2.5 flex items-center justify-center gap-2"
             >
-              RUN SKILL GAP AUDIT <ArrowRight size={14} />
+              RUN SKILL GAP AUDIT →
             </button>
             <button
               onClick={() => onNavigate?.('simulation')}

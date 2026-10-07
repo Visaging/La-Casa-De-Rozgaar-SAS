@@ -1,27 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import {
-  Plus,
-  Trash2,
-  CheckCircle2,
-  Play,
-  RefreshCw,
-  Save,
-  Check,
-  Database,
-  Sparkles,
-  TrendingUp,
-  Clock,
-  Target,
-  Brain,
-  ShieldCheck,
-  DollarSign,
-  Award,
-  Sliders,
-  ChevronRight,
-  Layers,
-  ArrowRight
-} from 'lucide-react'
-import {
   BarChart,
   Bar,
   LineChart,
@@ -413,7 +391,7 @@ export const SimulationVault: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className={isHeist ? 'stamp-live' : 'inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold uppercase'}>
-                <Database size={11} /> DATASET ML ENGINE
+                DATASET ML ENGINE
               </span>
               <span className={cn('text-xs font-mono', isHeist ? 'text-warm-ivory/60' : 'text-slate-500')}>
                 LIVE CAREER SIMULATION & WHAT-IF ENGINE
@@ -448,7 +426,7 @@ export const SimulationVault: React.FC = () => {
                   : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300'
               )}
             >
-              {saveSuccess ? <Check size={14} /> : isSaving ? <RefreshCw size={14} className="animate-spin" /> : <Save size={14} />}
+              {saveSuccess ? '✓ ' : isSaving ? '… ' : ''}
               {saveSuccess ? 'SCENARIO SAVED' : isSaving ? 'SAVING...' : 'SAVE SCENARIO'}
             </button>
             <button
@@ -459,7 +437,7 @@ export const SimulationVault: React.FC = () => {
                 isHeist ? 'btn-primary' : 'bg-blue-600 hover:bg-blue-700 text-white rounded-lg'
               )}
             >
-              <Play size={14} /> RUN SIMULATION
+              RUN SIMULATION
             </button>
           </div>
         </div>
@@ -476,7 +454,7 @@ export const SimulationVault: React.FC = () => {
               : 'bg-burgundy/10 border-burgundy/20 text-warm-ivory/70 hover:bg-burgundy/20 hover:text-warm-ivory'
           )}
         >
-          <DollarSign size={14} /> JDS SALARY HIKE PREDICTOR
+          JDS SALARY HIKE PREDICTOR
           <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400">
             CV 81.9%
           </span>
@@ -491,7 +469,7 @@ export const SimulationVault: React.FC = () => {
               : 'bg-burgundy/10 border-burgundy/20 text-warm-ivory/70 hover:bg-burgundy/20 hover:text-warm-ivory'
           )}
         >
-          <Brain size={14} /> SDS LEADERSHIP PROFILER
+          SDS LEADERSHIP PROFILER
           <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400">
             CV 90.7%
           </span>
@@ -506,7 +484,7 @@ export const SimulationVault: React.FC = () => {
               : 'bg-burgundy/10 border-burgundy/20 text-warm-ivory/70 hover:bg-burgundy/20 hover:text-warm-ivory'
           )}
         >
-          <Sliders size={14} /> MULTI-ROLE WHAT-IF SANDBOX
+          MULTI-ROLE WHAT-IF SANDBOX
           <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400">
             LOCAL DB
           </span>
@@ -522,7 +500,7 @@ export const SimulationVault: React.FC = () => {
                 <div className="flex items-center gap-2 mb-1">
                   <span className="stamp-live">LOGISTIC REGRESSION ENGINE</span>
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                    <ShieldCheck size={12} /> ML MODEL OUTPUT (5-Fold CV 81.9%, ROC-AUC 0.904)
+                    ML MODEL OUTPUT (5-Fold CV 81.9%, ROC-AUC 0.904)
                   </span>
                 </div>
                 <h2 className="heading-md text-warm-ivory">JUNIOR DATA SCIENTIST SALARY HIKE PROBABILITY</h2>
@@ -551,7 +529,7 @@ export const SimulationVault: React.FC = () => {
                 <div className="p-3 bg-burgundy/10 rounded-lg border border-burgundy/20 space-y-2">
                   <div className="flex justify-between items-center text-xs font-mono">
                     <span className="text-warm-ivory font-bold flex items-center gap-1.5">
-                      <Sparkles size={13} className="text-amber-400" /> Storytelling & Dashboards (Top Driver, 4.43x)
+                      Storytelling & Dashboards (Top Driver, 4.43x)
                     </span>
                     <span className="text-crimson font-bold">{jdsStorytelling.toFixed(1)} / 10</span>
                   </div>
@@ -570,7 +548,7 @@ export const SimulationVault: React.FC = () => {
                 <div className="p-3 bg-burgundy/10 rounded-lg border border-burgundy/20 space-y-2">
                   <div className="flex justify-between items-center text-xs font-mono">
                     <span className="text-warm-ivory font-bold flex items-center gap-1.5">
-                      <TrendingUp size={13} className="text-blue-400" /> Maths & Statistics (3.23x Odds)
+                      Maths & Statistics (3.23x Odds)
                     </span>
                     <span className="text-crimson font-bold">{jdsMathsStats.toFixed(1)} / 10</span>
                   </div>
@@ -717,7 +695,7 @@ export const SimulationVault: React.FC = () => {
                 <div className="flex items-center gap-2 mb-1">
                   <span className="stamp-live">BIG FIVE PSYCHOMETRIC CLASSIFIER</span>
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                    <ShieldCheck size={12} /> ML MODEL OUTPUT (5-Fold CV 90.7%, ROC-AUC 0.949)
+                    ML MODEL OUTPUT (5-Fold CV 90.7%, ROC-AUC 0.949)
                   </span>
                 </div>
                 <h2 className="heading-md text-warm-ivory">SENIOR DATA SCIENTIST LEADERSHIP & SUCCESS PROFILER</h2>
@@ -746,7 +724,7 @@ export const SimulationVault: React.FC = () => {
                 <div className="p-3 bg-burgundy/10 rounded-lg border border-burgundy/20 space-y-2">
                   <div className="flex justify-between items-center text-xs font-mono">
                     <span className="text-warm-ivory font-bold flex items-center gap-1.5">
-                      <Sparkles size={13} className="text-amber-400" /> Conscientiousness (Top Driver, 7.80x Odds)
+                      Conscientiousness (Top Driver, 7.80x Odds)
                     </span>
                     <span className="text-crimson font-bold">{sdsConscientiousness.toFixed(1)} / 5</span>
                   </div>
@@ -765,7 +743,7 @@ export const SimulationVault: React.FC = () => {
                 <div className="p-3 bg-burgundy/10 rounded-lg border border-burgundy/20 space-y-2">
                   <div className="flex justify-between items-center text-xs font-mono">
                     <span className="text-warm-ivory font-bold flex items-center gap-1.5">
-                      <TrendingUp size={13} className="text-blue-400" /> Openness to Experience (5.17x Odds)
+                      Openness to Experience (5.17x Odds)
                     </span>
                     <span className="text-crimson font-bold">{sdsOpenness.toFixed(1)} / 5</span>
                   </div>
@@ -850,7 +828,7 @@ export const SimulationVault: React.FC = () => {
                 {/* Responsible AI Safeguards Notice */}
                 <div className="p-4 bg-charcoal rounded-lg border border-emerald-500/30 space-y-2">
                   <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-bold">
-                    <ShieldCheck size={14} /> RESPONSIBLE AI & ETHICAL SAFEGUARDS
+                    RESPONSIBLE AI & ETHICAL SAFEGUARDS
                   </div>
                   <p className="text-[11px] text-warm-ivory/70 font-mono leading-relaxed">
                     {sdsResult?.ethical_ai_notice ||
@@ -875,7 +853,6 @@ export const SimulationVault: React.FC = () => {
               )}
             >
               <div className="flex items-center justify-center gap-2 font-bold text-sm">
-                <RefreshCw size={16} className="animate-spin" />
                 <span>{stages[simulationStage]}</span>
               </div>
               <div className="w-full bg-black/30 rounded-full h-1.5 max-w-md mx-auto overflow-hidden">
@@ -955,7 +932,7 @@ export const SimulationVault: React.FC = () => {
                   : 'text-blue-600 hover:bg-blue-50 border-blue-200'
               )}
             >
-              <Plus size={14} /> NEW
+              + NEW
             </button>
           </div>
 
@@ -995,10 +972,10 @@ export const SimulationVault: React.FC = () => {
                           e.stopPropagation()
                           deleteScenario(scenario.id)
                         }}
-                        className="text-xs hover:text-red-500 transition-colors p-1"
+                        className="text-xs hover:text-red-500 transition-colors px-1 font-mono font-bold"
                         title="Delete Scenario"
                       >
-                        <Trash2 size={13} />
+                        ✕
                       </button>
                     )}
                   </div>
@@ -1079,7 +1056,7 @@ export const SimulationVault: React.FC = () => {
                       isHeist ? 'border-crimson/40 text-crimson hover:bg-crimson/10' : 'border-blue-300 text-blue-600 hover:bg-blue-50'
                     )}
                   >
-                    <Plus size={12} /> ADD SKILL
+                    + ADD SKILL
                   </button>
                   <span className={isHeist ? 'stamp-classified' : 'text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700'}>
                     LIVE TELEMETRY
@@ -1176,7 +1153,7 @@ export const SimulationVault: React.FC = () => {
             {/* Dynamic Qualified Roles */}
             <div className={cn('card border', isHeist ? 'bg-emerald-400/5 border-emerald-400/30' : 'bg-emerald-50/50 border-emerald-200')}>
               <h3 className="heading-sm text-emerald-500 mb-4 font-mono text-sm uppercase flex items-center gap-2">
-                <Sparkles size={16} /> SIMULATION OUTPUTS // QUALIFIED TARGETS & ROI
+                SIMULATION OUTPUTS // QUALIFIED TARGETS & ROI
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
@@ -1189,7 +1166,7 @@ export const SimulationVault: React.FC = () => {
                         key={role}
                         className={cn('flex items-center gap-2 text-xs font-mono', isHeist ? 'text-warm-ivory/90' : 'text-slate-800')}
                       >
-                        <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                         {role}
                       </div>
                     ))}

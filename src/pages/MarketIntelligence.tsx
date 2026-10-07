@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { ArrowRight, Globe, DollarSign, Database, ShieldCheck, Sparkles, TrendingUp, Layers } from 'lucide-react'
 import { mockMarketData } from '../data/mockData'
 import { formatNumber } from '../lib/utils'
 import { useTheme } from '../hooks/useTheme'
@@ -95,8 +94,8 @@ export const MarketIntelligence: React.FC<MarketIntelligenceProps> = ({ onNaviga
             <div className="flex items-center gap-2 mb-2">
               <span className="stamp-live">LIVE RADAR</span>
               <span className="text-xs font-mono text-warm-ivory/60">OPERATION // MACRO-MARKET-SIGNALS</span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                <ShieldCheck size={12} /> REAL DATA
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                REAL DATA
               </span>
             </div>
             <h1 className="heading-lg text-warm-ivory mb-1">MARKET INTELLIGENCE RADAR</h1>
@@ -109,7 +108,7 @@ export const MarketIntelligence: React.FC<MarketIntelligenceProps> = ({ onNaviga
               onClick={() => onNavigate?.('job-finder')}
               className="btn-primary flex items-center gap-2 text-xs font-mono py-2.5 px-4"
             >
-              FIND MATCHED JOBS <ArrowRight size={14} />
+              FIND MATCHED JOBS →
             </button>
           </div>
         </div>
@@ -174,7 +173,6 @@ export const MarketIntelligence: React.FC<MarketIntelligenceProps> = ({ onNaviga
       <section className="card">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <Layers size={14} className="text-crimson" />
             <h3 className="heading-sm text-warm-ivory font-mono text-xs uppercase tracking-wider">
               BENCHMARK ROLE REGISTER ({realRoles.length > 0 ? realRoles.length : marketData.topRoles.length} VERIFIED FAMILIES)
             </h3>
@@ -309,7 +307,7 @@ export const MarketIntelligence: React.FC<MarketIntelligenceProps> = ({ onNaviga
             onClick={() => onNavigate?.('skill-heist')}
             className="w-full btn-secondary text-xs font-mono py-2.5 mt-4 flex items-center justify-center gap-2"
           >
-            AUDIT GAPS IN SKILL HEIST <ArrowRight size={14} />
+            AUDIT GAPS IN SKILL HEIST →
           </button>
         </div>
       </section>
@@ -318,7 +316,6 @@ export const MarketIntelligence: React.FC<MarketIntelligenceProps> = ({ onNaviga
       <section className="card">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
-            <Globe size={18} className="text-crimson" />
             <h3 className="heading-sm text-warm-ivory font-mono text-sm">REGIONAL HUBS & RECRUITMENT DENSITY</h3>
           </div>
           <span className="text-[10px] font-mono text-warm-ivory/60 bg-burgundy/20 px-2 py-0.5 rounded border border-burgundy/30">
@@ -359,7 +356,6 @@ export const MarketIntelligence: React.FC<MarketIntelligenceProps> = ({ onNaviga
             ].map(({ level, range, note }) => (
               <div key={level} className="card bg-burgundy/15 border-burgundy/30">
                 <div className="flex items-center gap-2 mb-2">
-                  <DollarSign size={16} className="text-emerald-400" />
                   <p className="text-xs text-warm-ivory/70 font-mono uppercase">{level}</p>
                 </div>
                 <p className="heading-md text-crimson mb-1 font-mono">{range}</p>
@@ -390,7 +386,6 @@ export const MarketIntelligence: React.FC<MarketIntelligenceProps> = ({ onNaviga
             ].map(({ level, range }) => (
               <div key={level} className="card bg-burgundy/15 border-burgundy/30">
                 <div className="flex items-center gap-2 mb-2">
-                  <DollarSign size={16} className="text-emerald-400" />
                   <p className="text-xs text-warm-ivory/70 font-mono uppercase">{level} LEVEL - {activeRole.name}</p>
                 </div>
                 <p className="heading-md text-crimson mb-1 font-mono">{range}</p>
@@ -402,7 +397,6 @@ export const MarketIntelligence: React.FC<MarketIntelligenceProps> = ({ onNaviga
           return Object.entries(mockMarketData.compensationRanges.softwareEngineer).map(([level, range]) => (
             <div key={level} className="card bg-burgundy/15 border-burgundy/30">
               <div className="flex items-center gap-2 mb-2">
-                <DollarSign size={16} className="text-emerald-400" />
                 <p className="text-xs text-warm-ivory/70 font-mono uppercase">{level} LEVEL</p>
               </div>
               <p className="heading-md text-crimson mb-1 font-mono">{range}</p>
