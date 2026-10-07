@@ -25,6 +25,7 @@ import notificationsRoutes from './routes/notifications.js';
 import usersRoutes from './routes/users.js';
 import dataCollectionRoutes from './routes/data-collection.js';
 import cronRoutes from './routes/cron.js';
+import analyticsRoutes from './routes/analytics.js';
 import { SchedulerService } from './services/data-collection/scheduler-service.js';
 
 export function createApp(): Express {
@@ -132,12 +133,15 @@ export function createApp(): Express {
   apiV1.use('/workforce', workforceRoutes);
   apiV1.use('/compensation', compensationRoutes);
   apiV1.use('/notifications', notificationsRoutes);
+  // Real Data & ML Analytics Engine endpoints (Member 2 & 3)
+  apiV1.use('/analytics', analyticsRoutes);
   // New data collection endpoints (admin only)
   apiV1.use('/data-collection', dataCollectionRoutes);
   // Cron endpoints for automated syncs
   apiV1.use('/cron', cronRoutes);
 
   app.use('/api/v1', apiV1);
+  app.use('/api/analytics', analyticsRoutes);
 
   // 404 handler
   app.use((req: Request, res: Response) => {
