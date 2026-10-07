@@ -21,6 +21,9 @@ export const RoleIntelligence: React.FC<RoleIntelligenceProps> = ({ onNavigate }
             <div className="flex items-center gap-2 mb-2">
               <span className="stamp-live">LIVE INTELLIGENCE</span>
               <span className="text-xs font-mono text-warm-ivory/60">OPERATION // ROLE-INTEL-08</span>
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                <ShieldCheck size={12} /> REAL DATA
+              </span>
             </div>
             <h1 className="heading-lg text-warm-ivory mb-1">ROLE INTELLIGENCE DOSSIERS</h1>
             <p className="text-xs md:text-sm text-warm-ivory/70 font-mono">

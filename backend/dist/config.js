@@ -26,8 +26,8 @@ export const config = {
     host: process.env.HOST || '0.0.0.0',
     nodeEnv: process.env.NODE_ENV || 'development',
     database: {
-        url: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_GEL6hcOmqD7C@ep-morning-morning-b5yio789-pooler.c-7.us-east-2.aws.neon.tech/lacasa_application?sslmode=require',
-        intelligenceUrl: process.env.INTELLIGENCE_DATABASE_URL || 'postgresql://neondb_owner:npg_GEL6hcOmqD7C@ep-morning-morning-b5yio789-pooler.c-7.us-east-2.aws.neon.tech/lacasa_intelligence?sslmode=require',
+        url: process.env.DATABASE_URL || '',
+        intelligenceUrl: process.env.INTELLIGENCE_DATABASE_URL || '',
         path: process.env.DATABASE_PATH || (process.env.VERCEL ? '/tmp/module2.db' : './data/module2.db'),
     },
     jwt: {

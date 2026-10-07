@@ -2,7 +2,7 @@
 **Project:** La Casa De Rozgaar — Workforce Intelligence Engine  
 **Track:** SAS Hackathon & Build For Bharat (Workforce Intelligence)  
 **Author:** Market Intelligence Team (Member 2)  
-**Generated Date:** 2026-10-07 14:09:28  
+**Generated Date:** 2026-10-07 17:16:03  
 **Status:** Grounded in Audited Competition Records ($N = 17,443$ jobs)
 
 ---

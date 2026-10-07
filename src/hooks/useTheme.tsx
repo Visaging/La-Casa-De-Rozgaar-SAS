@@ -48,31 +48,9 @@ export function resolveDefaultTheme(role?: string | null): VisualMode {
   return 'heist'
 }
 
-export function isLoginRoute(): boolean {
-  if (typeof window === 'undefined') return false
-  const hash = window.location.hash || ''
-  const pathname = window.location.pathname || ''
-  const cleanHash = hash.replace('#/', '').replace('#', '').split('?')[0]
-  return (
-    cleanHash === 'login' ||
-    hash.startsWith('#/login') ||
-    hash === '#login' ||
-    pathname.startsWith('/login')
-  )
-}
-
-export function applyDomTheme(mode: VisualMode, forceHeistForLogin = isLoginRoute()) {
+export function applyDomTheme(mode: VisualMode) {
   if (typeof document === 'undefined') return
   const root = document.documentElement
-
-  if (forceHeistForLogin) {
-    // The login page is strictly and exclusively Heist Mode
-    root.setAttribute('data-theme', 'heist')
-    root.setAttribute('data-page', 'login')
-    root.classList.remove('light', 'theme-professional')
-    root.classList.add('theme-heist', 'dark')
-    return
-  }
 
   root.removeAttribute('data-page')
   root.setAttribute('data-theme', mode)
@@ -117,19 +95,6 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     applyDomTheme(mode)
   }, [mode])
 
-  // Listen to hash changes (back/forward navigation, login redirects)
-  useEffect(() => {
-    const handleHashChange = () => {
-      if (isLoginRoute()) {
-        applyDomTheme('heist', true)
-      } else {
-        applyDomTheme(mode, false)
-      }
-    }
-    window.addEventListener('hashchange', handleHashChange)
-    return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [mode])
-
   // Cleanup any lingering timers on unmount
   useEffect(() => {
     return () => {
@@ -155,11 +120,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
       // 1. Immediately apply theme to state and persistent storage
       setModeState(newMode)
-      if (!isLoginRoute()) {
-        applyDomTheme(newMode, false)
-      } else {
-        applyDomTheme('heist', true)
-      }
+      applyDomTheme(newMode)
       try {
         localStorage.setItem(STORAGE_KEY, newMode)
         localStorage.setItem(LEGACY_STORAGE_KEY, newMode === 'heist' ? 'dark' : 'light')
@@ -172,21 +133,19 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         clearTimeout(transitionTimeoutRef.current)
       }
 
-      // 3. Trigger lightweight non-blocking sweep animation (only if not on login)
-      if (!isLoginRoute()) {
-        const direction = newMode === 'professional' ? 'to-professional' : 'to-heist'
-        setIsTransitioning(true)
-        setTransitionDirection(direction)
-        setTargetMode(newMode)
+      // 3. Trigger lightweight non-blocking sweep animation
+      const direction = newMode === 'professional' ? 'to-professional' : 'to-heist'
+      setIsTransitioning(true)
+      setTransitionDirection(direction)
+      setTargetMode(newMode)
 
-        // 4. Snappy auto-complete after 260ms (smooth, lightweight sweep)
-        transitionTimeoutRef.current = setTimeout(() => {
-          setIsTransitioning(false)
-          setTransitionDirection(null)
-          setTargetMode(null)
-          transitionTimeoutRef.current = null
-        }, 260)
-      }
+      // 4. Snappy auto-complete after 260ms (smooth, lightweight sweep)
+      transitionTimeoutRef.current = setTimeout(() => {
+        setIsTransitioning(false)
+        setTransitionDirection(null)
+        setTargetMode(null)
+        transitionTimeoutRef.current = null
+      }, 260)
     },
     [mode]
   )

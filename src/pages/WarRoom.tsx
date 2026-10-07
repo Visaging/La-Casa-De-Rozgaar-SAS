@@ -5,7 +5,6 @@ import { mockMarketData } from '../data/mockData'
 import { formatNumber, getTrendColor } from '../lib/utils'
 import { cn } from '../lib/utils'
 import { useTheme } from '../hooks/useTheme'
-import { useAuth } from '../hooks/useAuth'
 import { api } from '../services/api'
 
 interface WarRoomProps {
@@ -321,34 +320,34 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
           <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-2xs flex flex-col justify-between space-y-3">
             <div>
               <div className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider mb-1">
-                Talent Availability
+                Role Intelligence
               </div>
               <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                Frontend engineering talent availability has increased <strong>8%</strong> across your target hiring markets in Bengaluru and NCR.
+                Frontend and Data Science engineering talent availability mapped across 10 standardized role families and 642 companies.
               </p>
             </div>
             <button
-              onClick={() => onNavigate?.('talent-vault')}
-              className="text-xs font-semibold text-blue-700 hover:text-blue-900 inline-flex items-center gap-1 self-start transition-colors"
+              onClick={() => onNavigate?.('role-intelligence')}
+              className="text-xs font-semibold text-blue-700 hover:text-blue-900 inline-flex items-center gap-1 self-start transition-colors cursor-pointer"
             >
-              Explore Talent Directory <ArrowRight size={13} />
+              Explore Role Intelligence <ArrowRight size={13} />
             </button>
           </div>
 
           <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-2xs flex flex-col justify-between space-y-3">
             <div>
               <div className="text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
-                Market Compensation
+                Market Analytics
               </div>
               <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                Senior Data Engineering observed compensation rose <strong>+12.1%</strong> over the past two quarters across enterprise software benchmarks.
+                17,443 validated postings analyzed across 8 regional hubs with empirical salary quartile distributions.
               </p>
             </div>
             <button
-              onClick={() => onNavigate?.('compensation')}
-              className="text-xs font-semibold text-blue-700 hover:text-blue-900 inline-flex items-center gap-1 self-start transition-colors"
+              onClick={() => onNavigate?.('market-intelligence')}
+              className="text-xs font-semibold text-blue-700 hover:text-blue-900 inline-flex items-center gap-1 self-start transition-colors cursor-pointer"
             >
-              Benchmark Compensation <ArrowRight size={13} />
+              Macro Market Radar <ArrowRight size={13} />
             </button>
           </div>
         </div>
@@ -427,10 +426,10 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
               </p>
             </div>
             <button
-              onClick={() => onNavigate?.('employer-dashboard')}
-              className="text-xs text-blue-700 hover:text-blue-900 font-semibold"
+              onClick={() => onNavigate?.('market-intelligence')}
+              className="text-xs text-blue-700 hover:text-blue-900 font-semibold cursor-pointer"
             >
-              All Units
+              Market View
             </button>
           </div>
 
@@ -607,17 +606,13 @@ const EnterpriseOverview: React.FC<{ onNavigate?: (page: string) => void }> = ({
 // ============================================================================
 export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
   const { isHeist } = useTheme()
-  const { user } = useAuth()
   const [selectedRoleIdx, setSelectedRoleIdx] = useState(0)
+  // Removed perspective switcher - unified analytics dashboard
 
   // In Enterprise Mode: render the executive enterprise dashboard
   if (!isHeist) {
     return <EnterpriseOverview onNavigate={onNavigate} />
   }
-
-  // Derive perspective strictly and automatically from authenticated user role
-  const isCandidate = !user || user.role === 'CANDIDATE'
-  const perspective: 'CANDIDATE' | 'EMPLOYER' = isCandidate ? 'CANDIDATE' : 'EMPLOYER'
 
   // In Heist Mode: render the consumer / candidate Money Heist command center
   const activeRole = mockMarketData.topRoles[selectedRoleIdx] || mockMarketData.topRoles[0]
@@ -627,111 +622,91 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
       {/* Hero Command Section */}
       <section className="relative overflow-hidden rounded-xl border border-crimson/30 bg-gradient-obsidian p-6 md:p-8 shadow-glow-crimson">
         <div className="max-w-3xl space-y-4">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
-            <span className="stamp-live">COMMAND HQ ONLINE</span>
-            <span className="text-xs font-mono text-warm-ivory/60">OPERATION // STRATEGIC-OVERVIEW</span>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+              <span className="stamp-live">COMMAND HQ ONLINE</span>
+              <span className="text-xs font-mono text-warm-ivory/60">OPERATION // STRATEGIC-OVERVIEW</span>
+            </div>
+            
+            {/* Unified Analytics Dashboard - No Perspective Split */}
           </div>
 
           <div>
             <h1 className="heading-xl text-warm-ivory">LA CASA DE ROZGAAR</h1>
             <h2 className="heading-sm text-crimson mt-0.5">
-              {perspective === 'CANDIDATE'
-                ? 'INTELLIGENT TALENT COMMAND // CANDIDATE RADAR'
-                : 'ENTERPRISE WORKFORCE INTELLIGENCE // MASTERMIND'}
+              LABOR MARKET INTELLIGENCE COMMAND CENTER
             </h2>
           </div>
 
           <p className="text-warm-ivory/80 text-xs md:text-sm font-mono leading-relaxed">
-            {perspective === 'CANDIDATE'
-              ? 'Understand real market demand. Benchmark personal skill scores against verified baselines. Eliminate competency deficits through targeted resistance sprints.'
-              : 'Analyze organizational workforce capability, forecast macro talent shortages, detect capability deficits, and orchestrate precision talent acquisition.'}
+            Real-time labor market analytics powered by 17,443 job postings, 8,208 canonical skills, and ML-backed salary & leadership prediction models.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            {perspective === 'CANDIDATE' ? (
-              <>
-                <button
-                  onClick={() => onNavigate?.('assessment')}
-                  className="btn-primary flex items-center gap-2 text-xs font-mono py-2.5 px-4"
-                >
-                  START SECURE ASSESSMENT <ArrowRight size={14} />
-                </button>
-                <button
-                  onClick={() => onNavigate?.('skill-heist')}
-                  className="btn-secondary text-xs font-mono py-2.5 px-4"
-                >
-                  VIEW SKILL HEIST GAPS
-                </button>
-                <button
-                  onClick={() => onNavigate?.('simulation')}
-                  className="btn-secondary text-xs font-mono py-2.5 px-4"
-                >
-                  CAREER SIMULATION
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  onClick={() => onNavigate?.('talent-vault')}
-                  className="btn-primary flex items-center gap-2 text-xs font-mono py-2.5 px-4"
-                >
-                  DISCOVER VERIFIED TALENT <ArrowRight size={14} />
-                </button>
-                <button
-                  onClick={() => onNavigate?.('skill-intelligence')}
-                  className="btn-secondary text-xs font-mono py-2.5 px-4"
-                >
-                  SKILL INTELLIGENCE RADAR
-                </button>
-                <button
-                  onClick={() => onNavigate?.('forecast')}
-                  className="btn-secondary text-xs font-mono py-2.5 px-4"
-                >
-                  VIEW 3-YR FORECAST
-                </button>
-              </>
-            )}
+            <button
+              onClick={() => onNavigate?.('market-intelligence')}
+              className="btn-primary flex items-center gap-2 text-xs font-mono py-2.5 px-4 cursor-pointer"
+            >
+              MARKET INTELLIGENCE <ArrowRight size={14} />
+            </button>
+            <button
+              onClick={() => onNavigate?.('skill-intelligence')}
+              className="btn-secondary text-xs font-mono py-2.5 px-4 cursor-pointer"
+            >
+              SKILL ANALYTICS
+            </button>
+            <button
+              onClick={() => onNavigate?.('role-intelligence')}
+              className="btn-secondary text-xs font-mono py-2.5 px-4 cursor-pointer"
+            >
+              ROLE INSIGHTS
+            </button>
+            <button
+              onClick={() => onNavigate?.('simulation')}
+              className="btn-secondary text-xs font-mono py-2.5 px-4 cursor-pointer"
+            >
+              ML PREDICTIONS
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Key Market Metrics */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="card">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] text-warm-ivory/60 font-mono">JOBS INGESTED & ANALYZED</span>
+            <span className="text-[11px] text-warm-ivory/60 font-mono">JOBS ANALYZED</span>
             <Zap size={16} className="text-crimson" />
           </div>
-          <p className="heading-md text-warm-ivory font-mono">{formatNumber(mockMarketData.totalJobsAnalyzed)}</p>
-          <p className="text-[11px] text-emerald-400 font-mono mt-1">+24.3% YoY Ingestion Volume</p>
+          <p className="heading-md text-warm-ivory font-mono">17,443</p>
+          <p className="text-[11px] text-emerald-400 font-mono mt-1">Real Competition Dataset</p>
         </div>
 
         <div className="card">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] text-warm-ivory/60 font-mono">COMPETENCY STACKS TRACKED</span>
-            <Target size={16} className="text-crimson" />
+            <span className="text-[11px] text-warm-ivory/60 font-mono">ESTIMATED OPENINGS</span>
+            <Target size={16} className="text-amber-400" />
           </div>
-          <p className="heading-md text-warm-ivory font-mono">{formatNumber(mockMarketData.totalSkillsTracked)}</p>
-          <p className="text-[11px] text-emerald-400 font-mono mt-1">+12.1% Active Tech Vectors</p>
+          <p className="heading-md text-warm-ivory font-mono">1.09 Lakh</p>
+          <p className="text-[11px] text-warm-ivory/50 font-mono mt-1">108,846 Positions Represented</p>
         </div>
 
         <div className="card">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] text-warm-ivory/60 font-mono">STANDARDIZED ROLES</span>
-            <Eye size={16} className="text-crimson" />
+            <span className="text-[11px] text-warm-ivory/60 font-mono">CANONICAL SKILLS TRACKED</span>
+            <Brain size={16} className="text-blue-400" />
           </div>
-          <p className="heading-md text-warm-ivory font-mono">{formatNumber(mockMarketData.totalRolesTracked)}</p>
-          <p className="text-[11px] text-emerald-400 font-mono mt-1">+8.7% Taxonomy Coverage</p>
+          <p className="heading-md text-warm-ivory font-mono">8,208</p>
+          <p className="text-[11px] text-emerald-400 font-mono mt-1">Normalized Taxonomy</p>
         </div>
 
         <div className="card">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] text-warm-ivory/60 font-mono">INTELLIGENCE ACCURACY</span>
+            <span className="text-[11px] text-warm-ivory/60 font-mono">MEDIAN SALARY</span>
             <span className="stamp-verified">VERIFIED</span>
           </div>
-          <p className="heading-md text-emerald-400 font-mono">99.4%</p>
-          <p className="text-[11px] text-warm-ivory/50 font-mono mt-1">Cross-Referenced Ground Truth</p>
+          <p className="heading-md text-emerald-400 font-mono">₹11.9 Lakhs</p>
+          <p className="text-[11px] text-warm-ivory/50 font-mono mt-1">P25: ₹7.6L • P75: ₹17.2L</p>
         </div>
       </section>
 
@@ -766,7 +741,7 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
                       <h4 className="text-sm font-semibold">{role.name}</h4>
                     </div>
                     <p className="text-[11px] font-mono opacity-70 mt-0.5">
-                      {formatNumber(role.demand)} active vacancies • {role.salary}
+                      {formatNumber(role.openings)} openings • {role.salary}
                     </p>
                   </div>
                   <span className={cn('text-xs font-mono font-bold', getTrendColor(role.trend))}>
@@ -888,30 +863,30 @@ export const WarRoom: React.FC<WarRoomProps> = ({ onNavigate }) => {
       <section className="card bg-gradient-obsidian border-crimson/30">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
-            onClick={() => onNavigate?.('candidate-dossier')}
+            onClick={() => onNavigate?.('skill-intelligence')}
             className="p-4 border border-burgundy/30 rounded-lg card-hover cursor-pointer group"
           >
-            <h4 className="heading-xs text-crimson mb-1 group-hover:text-crimson-light">CANDIDATE DOSSIER →</h4>
+            <h4 className="heading-xs text-crimson mb-1 group-hover:text-crimson-light">SKILL INTELLIGENCE →</h4>
             <p className="text-warm-ivory/70 text-xs font-mono">
-              Review personal benchmark scores, skill radar comparisons, and verified certifications.
+              8,208 canonical skills, co-occurrence patterns, and emerging tech stack momentum.
             </p>
           </div>
           <div
-            onClick={() => onNavigate?.('employer-dashboard')}
+            onClick={() => onNavigate?.('role-intelligence')}
             className="p-4 border border-burgundy/30 rounded-lg card-hover cursor-pointer group"
           >
-            <h4 className="heading-xs text-crimson mb-1 group-hover:text-crimson-light">EMPLOYER MASTERMIND →</h4>
+            <h4 className="heading-xs text-crimson mb-1 group-hover:text-crimson-light">ROLE PROFILES →</h4>
             <p className="text-warm-ivory/70 text-xs font-mono">
-              Plan workforce capacity, detect organizational capability gaps, and execute talent pipelines.
+              10 standardized role families with salary quartiles and competency blueprints.
             </p>
           </div>
           <div
             onClick={() => onNavigate?.('simulation')}
             className="p-4 border border-burgundy/30 rounded-lg card-hover cursor-pointer group"
           >
-            <h4 className="heading-xs text-crimson mb-1 group-hover:text-crimson-light">SIMULATION VAULT →</h4>
+            <h4 className="heading-xs text-crimson mb-1 group-hover:text-crimson-light">ML PREDICTIONS →</h4>
             <p className="text-warm-ivory/70 text-xs font-mono">
-              Interactive career scenario planning: drag mastery sliders and observe readiness gains.
+              JDS salary hike & SDS leadership ML models with validated accuracy metrics.
             </p>
           </div>
         </div>

@@ -84,7 +84,7 @@ router.put('/profile', async (req: Request, res: Response) => {
         preferred_locations = COALESCE(?, preferred_locations),
         employment_preferences = COALESCE(?, employment_preferences),
         portfolio_links = COALESCE(?, portfolio_links),
-        updated_at = NOW()
+        updated_at = datetime('now')
       WHERE id = ?
     `).run(
       name !== undefined ? name : null,

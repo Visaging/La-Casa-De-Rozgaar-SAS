@@ -3,15 +3,15 @@
 **Track:** SAS Hackathon / Build For Bharat (Workforce Intelligence Track)  
 **Team:** DeezNerdz  
 **Last Updated:** 2026-10-07  
-**Overall Status:** Priorities 1–4 Completed (100% Verified) | Priorities 5–6 Ready for Execution
+**Overall Status:** Priorities 1–5 Completed (100% Verified) | Priority 6 Ready for Execution
 
 ---
 
-## 🚀 Quick Overview for Teammates
+## Quick Overview for Teammates
 
-This guide outlines the 6 engineering and research priorities designed to win the Hackathon. We have completed the entire data engineering, analytics computation, predictive machine learning, and REST API simulation backend (Priorities 1–4). 
+This guide outlines the 6 engineering and research priorities designed to win the Hackathon. We have completed the entire data engineering, analytics computation, predictive machine learning, REST API simulation backend, and live frontend integration with data provenance badging (Priorities 1–5). 
 
-All members can reference this document to understand what has been built, how to run and test each component, and what remains for frontend integration and documentation.
+All members can reference this document to understand what has been built, how to run and test each component, and what remains for documentation and final pitch artifacts.
 
 ```mermaid
 flowchart LR
@@ -25,15 +25,15 @@ flowchart LR
     style P2 fill:#10b981,stroke:#059669,color:#fff
     style P3 fill:#10b981,stroke:#059669,color:#fff
     style P4 fill:#10b981,stroke:#059669,color:#fff
-    style P5 fill:#3b82f6,stroke:#2563eb,color:#fff
+    style P5 fill:#10b981,stroke:#059669,color:#fff
     style P6 fill:#8b5cf6,stroke:#7c3aed,color:#fff
 ```
 
 ---
 
-## 📊 Priority Breakdown & Current Status
+## Priority Breakdown & Current Status
 
-### ✅ Priority 1: Data Engineering & Cleaning Pipeline
+### Priority 1: Data Engineering & Cleaning Pipeline
 * **Status:** `COMPLETED`
 * **Lead:** Member 1 (Data Engineering)
 * **Goal:** Clean and normalize the 4 official competition datasets without data loss, standardize 10,000+ raw skills into 214 canonical skills, and build indexed SQLite storage.
@@ -54,7 +54,7 @@ flowchart LR
 
 ---
 
-### ✅ Priority 2: Market & Skill Analytics Engine
+### Priority 2: Market & Skill Analytics Engine
 * **Status:** `COMPLETED`
 * **Lead:** Member 2 (Market Intelligence)
 * **Goal:** Compute macro market metrics, salary quartiles, role hierarchies, skill penetration rates, and co-occurrence matrices.
@@ -74,7 +74,7 @@ flowchart LR
 
 ---
 
-### ✅ Priority 3: Predictive ML Engine (JDS & SDS Models)
+### Priority 3: Predictive ML Engine (JDS & SDS Models)
 * **Status:** `COMPLETED`
 * **Lead:** Member 3 (Machine Learning & Modeling)
 * **Goal:** Train, validate (5-Fold Stratified CV), and export explainable machine learning models for salary hike prediction (JDS) and leadership success profiling (SDS).
@@ -98,7 +98,7 @@ flowchart LR
 
 ---
 
-### ✅ Priority 4: Simulation Engine & REST API Endpoints
+### Priority 4: Simulation Engine & REST API Endpoints
 * **Status:** `COMPLETED`
 * **Lead:** Member 2 & 3 (Backend & Simulation)
 * **Goal:** Implement high-speed Express REST endpoints providing real analytics and live What-If simulation with sub-5ms response latency.
@@ -123,31 +123,25 @@ flowchart LR
 
 ---
 
-### ⏳ Priority 5: Frontend Integration & Provenance Badging
-* **Status:** `UPCOMING / READY FOR DEVELOPMENT`
+### Priority 5: Frontend Integration & Provenance Badging
+* **Status:** `COMPLETED`
 * **Lead:** Frontend Engineers / Full Stack
 * **Goal:** Connect existing React + TypeScript pages to the live analytics REST endpoints while adhering to the **Zero-Redesign Principle** (preserving the existing high-end UI design and theme toggle) and attaching clear Data Provenance Badges.
-* **Target Files to Update:**
-  1. `src/services/api.ts` — Add helper methods `getMarketOverview()`, `getRoleIntelligence()`, `getSkillIntelligence()`, `getSkillNetwork()`, `simulateJds()`, `simulateSds()`.
-  2. `src/pages/MarketIntelligence.tsx` — Bind macro metric cards (108,846 openings, 11.9L salary) and charts to `/api/v1/analytics/overview` and `/api/v1/analytics/roles`.
-  3. `src/pages/SkillIntelligence.tsx` — Bind skill tables and co-occurrence graphs to `/api/v1/analytics/skills` and `/api/v1/analytics/network`.
-  4. `src/pages/SimulationVault.tsx` & `WorkforceSimulator.tsx` — Connect sliders directly to `POST /api/v1/analytics/simulate/jds` and `POST /api/v1/analytics/simulate/sds` to display live probability, salary uplift, and prescriptive coaching.
-  5. **Data Provenance Badging:** Render subtle visual badges:
-     * `REAL DATA (N=17,443)`
-     * `MODEL OUTPUT (5-Fold CV 81.9%)`
-     * `SIMULATION (Scenario-based)`
-* **Development Command:**
-  ```bash
-  # In terminal 1 (Backend):
-  npm --prefix backend run dev
-  
-  # In terminal 2 (Frontend):
-  npm run dev
-  ```
+* **Key Files Integrated & Enhanced:**
+  1. `src/services/api.ts` — Fully wired `api.analytics` methods (`getOverview`, `getRoles`, `getSkills`, `getNetwork`, `simulateJds`, `simulateSds`, `getModelsMetadata`).
+  2. `src/pages/MarketIntelligence.tsx` — Macro metric cards bound to empirical data ($108,846$ openings, $₹11.9\text{L}$ median salary, Bengaluru $21.4\%$) with `REAL DATA (N=17,443)` badge.
+  3. `src/pages/SkillIntelligence.tsx` — 214+ canonical skills ranked by empirical frequency ($1,553$ SQL postings, $962$ Python postings) with real synergy pairings and `REAL DATA (214+ CANONICAL SKILLS, N=17,443)` badge.
+  4. `src/pages/SimulationVault.tsx` — Interactive tabs for JDS Salary Hike ($81.9\%$ CV) and SDS Leadership Big Five ($90.7\%$ CV) ML models with live sliders, odds ratios, and prescriptive coaching.
+  5. `src/pages/RoleIntelligence.tsx`, `CompensationIntelligence.tsx`, `WorkforceSimulator.tsx` — Attached provenance badges across both Professional and Heist themes.
+* **Data Provenance Badges Active:**
+  * `REAL DATA (N=17,443)`
+  * `MODEL OUTPUT (5-Fold CV 81.9%, ROC-AUC 0.904, N=139)`
+  * `MODEL OUTPUT (5-Fold CV 90.7%, ROC-AUC 0.949, N=161)`
+  * `SIMULATION (Scenario-based ROI)`
 
 ---
 
-### ⏳ Priority 6: Round 2 Approach Note (20–25 Pages) & R3 Pitch Deck
+### Priority 6: Round 2 Approach Note (20–25 Pages) & R3 Pitch Deck
 * **Status:** `UPCOMING`
 * **Lead:** All Team Members (Research & Documentation)
 * **Goal:** Compile the comprehensive 20–25 page Approach Note PDF covering all 25 required sections and create the Round 3 video demo / pitch deck.
@@ -162,7 +156,7 @@ flowchart LR
 
 ---
 
-## 🛠️ Developer Cheatsheet & Directory Structure
+## Developer Cheatsheet & Directory Structure
 
 ```text
 La-Casa-De-Rozgaar-SAS/
@@ -190,15 +184,15 @@ La-Casa-De-Rozgaar-SAS/
 
 ---
 
-## 👥 Team Work Allocation
+## Team Work Allocation
 
 | Team Member | Primary Responsibility | Associated Priorities | Current Status |
 | :--- | :--- | :--- | :--- |
-| **Member 1** | Data Engineering & Cleaning Pipeline | **Priority 1** | ✅ **Done** |
-| **Member 2** | Market Intelligence & API Gateway | **Priority 2 & 4** | ✅ **Done** |
-| **Member 3** | Predictive Machine Learning & Cross-Validation | **Priority 3 & 4** | ✅ **Done** |
-| **Member 4 / All** | Frontend Integration & Provenance Badges | **Priority 5** | ⏳ **Next Up** |
-| **All Members** | 20–25 Page Approach Note & Pitch Deck | **Priority 6** | ⏳ **Final Step** |
+| **Member 1** | Data Engineering & Cleaning Pipeline | **Priority 1** | **Done** |
+| **Member 2** | Market Intelligence & API Gateway | **Priority 2 & 4** | **Done** |
+| **Member 3** | Predictive Machine Learning & Cross-Validation | **Priority 3 & 4** | **Done** |
+| **Member 4 / All** | Frontend Integration & Provenance Badges | **Priority 5** | **Next Up** |
+| **All Members** | 20–25 Page Approach Note & Pitch Deck | **Priority 6** | **Final Step** |
 
 ---
 

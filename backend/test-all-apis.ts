@@ -18,7 +18,7 @@ const results: TestSuiteResult[] = [];
 
 async function runTests() {
   console.log('================================================================');
-  console.log('🧪 COMPREHENSIVE END-TO-END API TEST SUITE');
+  console.log('[TEST] COMPREHENSIVE END-TO-END API TEST SUITE');
   console.log('================================================================\n');
 
   let token = '';
@@ -179,13 +179,13 @@ async function runTests() {
 
   // Summary
   console.log('\n================================================================');
-  console.log('📊 TEST EXECUTION SUMMARY:');
+  console.log('[SUMMARY] TEST EXECUTION SUMMARY:');
   console.log('================================================================');
   let passed = 0;
   let failed = 0;
 
   for (const r of results) {
-    const icon = r.success ? '✅' : '❌';
+    const icon = r.success ? '[PASS]' : '[FAIL]';
     console.log(`${icon} [${r.method}] ${r.route} -> Status: ${r.status} (Expected: ${r.expectedStatus.join(', ')}) ${r.message || ''}`);
     if (r.success) passed++;
     else failed++;

@@ -8,13 +8,8 @@ import {
   ChevronDown,
   Building2,
   Check,
-  User,
-  LogOut,
-  Shield,
-  KeyRound,
 } from 'lucide-react'
 import { useTheme } from '../hooks/useTheme'
-import { useAuth } from '../hooks/useAuth'
 import { useWindowSize } from '../hooks/useWindowSize'
 import { ThemeModeSwitch } from './ThemeModeSwitch'
 import { cn } from '../lib/utils'
@@ -39,7 +34,7 @@ interface NavGroup {
 }
 
 // ============================================================================
-// HEIST MODE NAVIGATION TAXONOMY (Consumer / Candidate Experience)
+// HEIST MODE NAVIGATION TAXONOMY (Dataset & Analytics Aligned)
 // ============================================================================
 const heistNavigationItems: NavGroup[] = [
   {
@@ -48,42 +43,17 @@ const heistNavigationItems: NavGroup[] = [
     description: 'Command Center',
   },
   {
-    label: 'INTELLIGENCE',
+    label: 'LABOR INTELLIGENCE',
     submenu: [
-      { label: 'Market Demand', href: 'market-intelligence' },
-      { label: 'Skill Intelligence', href: 'skill-intelligence' },
-      { label: 'Role Intelligence', href: 'role-intelligence' },
-      { label: 'Compensation Intel', href: 'compensation' },
-      { label: 'Future Forecast', href: 'forecast' },
+      { label: 'Market Demand Analytics', href: 'market-intelligence' },
+      { label: 'Skill Intelligence Network', href: 'skill-intelligence' },
+      { label: 'Role Competency Profiles', href: 'role-intelligence' },
     ],
   },
   {
-    label: 'CANDIDATE',
+    label: 'SIMULATION ENGINE',
     submenu: [
-      { label: 'Candidate Dossier', href: 'candidate-dossier' },
-      { label: 'Secure Assessment', href: 'assessment' },
-      { label: 'Skill Heist Roadmap', href: 'skill-heist' },
-      { label: 'AI Job Finder', href: 'job-finder' },
-      { label: 'Career Pathways', href: 'career-intelligence' },
-      { label: 'Simulation Vault', href: 'simulation' },
-    ],
-  },
-  {
-    label: 'EMPLOYER',
-    submenu: [
-      { label: 'Mastermind HQ', href: 'employer-dashboard' },
-      { label: 'Talent Vault', href: 'talent-vault' },
-      { label: 'Workforce Simulator', href: 'workforce-simulator' },
-      { label: 'Syndicate Dossier', href: 'company-profile' },
-    ],
-  },
-  {
-    label: 'LEARNING & INTEL',
-    submenu: [
-      { label: 'Resistance Learning', href: 'roadmap' },
-      { label: 'Interview Intelligence', href: 'interviews' },
-      { label: 'Research Papers', href: 'research' },
-      { label: 'Intelligence Feed', href: 'feed' },
+      { label: 'ML Prediction Vault', href: 'simulation' },
     ],
   },
 ]
@@ -103,82 +73,30 @@ const enterpriseNavSections: EnterpriseNavSection[] = [
   {
     title: 'OVERVIEW',
     items: [
-      { label: 'Executive Overview', href: 'war-room' },
+      { label: 'Executive Command', href: 'war-room' },
     ],
   },
   {
-    title: 'MARKET INTELLIGENCE',
+    title: 'LABOR MARKET INTELLIGENCE',
     items: [
       { label: 'Market Overview', href: 'market-intelligence' },
-      { label: 'Skill Intelligence', href: 'skill-intelligence' },
-      { label: 'Role Intelligence', href: 'role-intelligence' },
-      { label: 'Compensation Benchmarks', href: 'compensation' },
-      { label: 'Workforce Forecasts', href: 'forecast' },
+      { label: 'Skill Analytics & Network', href: 'skill-intelligence' },
+      { label: 'Role Competencies & Pathways', href: 'role-intelligence' },
     ],
   },
   {
-    title: 'CANDIDATE SUITE',
+    title: 'PREDICTIVE SIMULATION',
     items: [
-      { label: 'Candidate Profile', href: 'candidate-dossier' },
-      { label: 'Skill Assessment', href: 'assessment' },
-      { label: 'Skill Development', href: 'skill-heist' },
-      { label: 'Job Matching', href: 'job-finder' },
-      { label: 'Career Pathways', href: 'career-intelligence' },
-      { label: 'Scenario Simulator', href: 'simulation' },
-    ],
-  },
-  {
-    title: 'EMPLOYER SUITE',
-    items: [
-      { label: 'Employer Dashboard', href: 'employer-dashboard' },
-      { label: 'Talent Directory', href: 'talent-vault' },
-      { label: 'Workforce Simulator', href: 'workforce-simulator' },
-      { label: 'Company Profile & Settings', href: 'company-profile' },
-    ],
-  },
-  {
-    title: 'LEARNING & INSIGHTS',
-    items: [
-      { label: 'Learning Paths', href: 'roadmap' },
-      { label: 'Technical Interviews', href: 'interviews' },
-      { label: 'Empirical Research', href: 'research' },
-      { label: 'Intelligence Wire', href: 'feed' },
+      { label: 'ML Simulation Vault', href: 'simulation' },
     ],
   },
 ]
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onNavigate, currentPage }) => {
   const { isHeist } = useTheme()
-  const { user } = useAuth()
   const { width } = useWindowSize()
   const isDesktop = width >= 768
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null)
-
-  const isCandidate = user?.role === 'CANDIDATE'
-  const isEmployer = user?.role === 'RECRUITER' || user?.role === 'EMPLOYER_ADMIN'
-  const isAdmin = user?.role === 'ADMIN'
-
-  // Filter Heist Navigation Items based on Role (Candidate only sees Candidate, Employer only sees Employer)
-  const filteredHeistNavItems = heistNavigationItems.filter((item) => {
-    if (item.label === 'CANDIDATE') {
-      return isCandidate || isAdmin
-    }
-    if (item.label === 'EMPLOYER') {
-      return isEmployer || isAdmin
-    }
-    return true
-  })
-
-  // Filter Enterprise Nav Sections based on Role
-  const filteredEnterpriseNavSections = enterpriseNavSections.filter((section) => {
-    if (section.title === 'CANDIDATE SUITE') {
-      return isCandidate || isAdmin
-    }
-    if (section.title === 'EMPLOYER SUITE') {
-      return isEmployer || isAdmin
-    }
-    return true
-  })
 
   const handleNavClick = (href: string) => {
     if (href && onNavigate) {
@@ -243,7 +161,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onNavigate, c
 
           {/* Enterprise Navigation List (Text + Hierarchy, No Icon Spam) */}
           <nav className="flex-1 px-3 py-3 pb-6 overflow-y-auto space-y-4">
-            {filteredEnterpriseNavSections.map((section) => (
+            {enterpriseNavSections.map((section) => (
               <div key={section.title} className="space-y-0.5">
                 <div className="px-2.5 py-1 text-[10px] font-bold tracking-wider text-slate-400 uppercase">
                   {section.title}
@@ -336,7 +254,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onNavigate, c
 
         {/* Navigation List */}
         <nav className="flex-1 px-3 py-3 pb-6 space-y-1 overflow-y-auto">
-          {filteredHeistNavItems.map((item) => {
+          {heistNavigationItems.map((item) => {
             const isDirectActive = item.href === currentPage
             const isSubActive = item.submenu?.some((s) => s.href === currentPage)
             const isExpanded = expandedMenu === item.label || isSubActive
@@ -439,28 +357,23 @@ export const Header: React.FC<HeaderProps> = ({
   currentPage,
 }) => {
   const { isHeist } = useTheme()
-  const { user, isAuthenticated, logout } = useAuth()
   const [workspaceMenuOpen, setWorkspaceMenuOpen] = useState(false)
-  const [userMenuOpen, setUserMenuOpen] = useState(false)
   const [selectedWorkspace, setSelectedWorkspace] = useState('Global Operations')
 
   const heistPageTitles: Record<string, string> = {
     'war-room': 'WAR ROOM COMMAND CENTER',
     'market-intelligence': 'MARKET INTELLIGENCE RADAR',
     'skill-intelligence': 'SKILL VELOCITY & DEMAND',
-    'role-intelligence': 'ROLE COMPETENCY DOSSIERS',
+    'role-intelligence': 'ROLE COMPETENCY PROFILES',
     'compensation': 'COMPENSATION INTELLIGENCE',
     'forecast': 'FUTURE WORKFORCE FORECAST',
-    'candidate-dossier': 'CANDIDATE CAPABILITY DOSSIER',
     'assessment': 'SECURE PROCTORED ASSESSMENT',
     'skill-heist': 'SKILL HEIST ROADMAP',
     'job-finder': 'AI JOB MATCHING ENGINE',
     'career-intelligence': 'CAREER INTELLIGENCE PATHWAYS',
     'simulation': 'SIMULATION VAULT SCENARIO ENGINE',
-    'employer-dashboard': 'EMPLOYER MASTERMIND HQ',
     'talent-vault': 'TALENT VAULT RECRUIT DISCOVERY',
     'workforce-simulator': 'WORKFORCE SIMULATION SANDBOX',
-    'company-profile': 'MASTERMIND ENTITY DOSSIER',
     'workforce-gaps': 'WORKFORCE GAP ANALYSIS',
     'roadmap': 'RESISTANCE LEARNING SPRINT',
     'interviews': 'INTERVIEW INTELLIGENCE SYSTEM',
@@ -475,16 +388,13 @@ export const Header: React.FC<HeaderProps> = ({
     'role-intelligence': 'Role Architecture & Competency',
     'compensation': 'Compensation & Market Benchmarks',
     'forecast': 'Workforce Demand Forecasts',
-    'candidate-dossier': 'Candidate Profile & Competency Matrix',
     'assessment': 'Standardized Skills Assessment',
     'skill-heist': 'Skill Development & Upskilling Roadmap',
     'job-finder': 'Candidate Matching Engine',
     'career-intelligence': 'Career Pathways & Mobility',
     'simulation': 'Workforce Scenario Simulator',
-    'employer-dashboard': 'Workforce Overview & Capability',
     'talent-vault': 'Talent Directory',
     'workforce-simulator': 'Workforce Scenario Simulator & ROI Modeling',
-    'company-profile': 'Company Profile & Recruitment Settings',
     'workforce-gaps': 'Workforce Gap Analysis',
     'roadmap': 'Learning Paths & Curriculum',
     'interviews': 'Technical Interview Intelligence',
@@ -584,89 +494,6 @@ export const Header: React.FC<HeaderProps> = ({
               <Bell size={17} />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600" />
             </button>
-
-            {/* User Profile / Login Button */}
-            {isAuthenticated && user ? (
-              <div className="relative">
-                <button
-                  onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 pl-2 border-l border-slate-200 text-left hover:opacity-85 transition-opacity cursor-pointer"
-                >
-                  <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold text-xs shadow-2xs">
-                    {user.avatarInitials || 'OP'}
-                  </div>
-                  <div className="text-left text-xs leading-none hidden xl:block">
-                    <div className="font-semibold text-slate-800">{user.name}</div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">{user.role}</div>
-                  </div>
-                  <ChevronDown size={13} className="text-slate-400 hidden xl:block" />
-                </button>
-
-                {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-56 bg-white border border-slate-200 rounded-lg shadow-xl py-2 z-50 text-xs">
-                    <div className="px-3 py-1.5 border-b border-slate-100">
-                      <div className="font-semibold text-slate-900">{user.name}</div>
-                      <div className="text-[11px] text-slate-500 truncate">{user.email}</div>
-                      <div className="text-[10px] mt-1 inline-block px-1.5 py-0.5 bg-blue-50 text-blue-700 rounded font-semibold font-mono">
-                        {user.role}
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => {
-                        setUserMenuOpen(false)
-                        onNavigate(user.role === 'CANDIDATE' ? 'candidate-dossier' : 'employer-dashboard')
-                      }}
-                      className="w-full text-left px-3 py-2 hover:bg-slate-50 text-slate-700 flex items-center gap-2 cursor-pointer"
-                    >
-                      <User size={13} />
-                      <span>{user.role === 'CANDIDATE' ? 'My Candidate Dossier' : 'Employer Dashboard'}</span>
-                    </button>
-                    {(user.role === 'RECRUITER' || user.role === 'EMPLOYER_ADMIN' || user.role === 'ADMIN') && (
-                      <button
-                        onClick={() => {
-                          setUserMenuOpen(false)
-                          onNavigate('company-profile')
-                        }}
-                        className="w-full text-left px-3 py-2 hover:bg-slate-50 text-slate-700 flex items-center gap-2 cursor-pointer"
-                      >
-                        <Building2 size={13} />
-                        <span>Company Profile & Settings</span>
-                      </button>
-                    )}
-                    <button
-                      onClick={() => {
-                        setUserMenuOpen(false)
-                        onNavigate('login')
-                      }}
-                      className="w-full text-left px-3 py-2 hover:bg-slate-50 text-slate-700 flex items-center gap-2 cursor-pointer"
-                    >
-                      <KeyRound size={13} />
-                      <span>Switch Operative Clearance</span>
-                    </button>
-                    <div className="border-t border-slate-100 my-1" />
-                    <button
-                      onClick={() => {
-                        setUserMenuOpen(false)
-                        logout()
-                        onNavigate('login')
-                      }}
-                      className="w-full text-left px-3 py-2 hover:bg-red-50 text-red-600 flex items-center gap-2 cursor-pointer"
-                    >
-                      <LogOut size={13} />
-                      <span>Sign Out</span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <button
-                onClick={() => onNavigate('login')}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 shadow-2xs transition-colors cursor-pointer"
-              >
-                <User size={13} />
-                <span>Sign In</span>
-              </button>
-            )}
           </div>
         </div>
       </header>
@@ -743,92 +570,6 @@ export const Header: React.FC<HeaderProps> = ({
             <Bell size={18} />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-crimson animate-pulse" />
           </button>
-
-          {/* User Profile / Login Button in Heist Mode */}
-          {isAuthenticated && user ? (
-            <div className="relative">
-              <button
-                onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center gap-2 pl-2 border-l border-burgundy/30 text-left hover:opacity-90 transition-opacity cursor-pointer"
-              >
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-crimson to-blood-red text-white flex items-center justify-center font-bold text-xs shadow-glow-crimson border border-crimson/60">
-                  {user.avatarInitials || 'OP'}
-                </div>
-                <div className="text-left text-xs leading-none hidden xl:block font-mono">
-                  <div className="font-bold text-warm-ivory flex items-center gap-1">
-                    <span>{user.name}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  </div>
-                  <div className="text-[9px] text-crimson font-bold mt-0.5">[{user.role}]</div>
-                </div>
-                <ChevronDown size={13} className="text-warm-ivory/40 hidden xl:block" />
-              </button>
-
-              {userMenuOpen && (
-                <div className="absolute right-0 mt-2 w-60 bg-charcoal/95 border border-burgundy/60 rounded-xl shadow-glow-crimson py-2 z-50 text-xs font-mono backdrop-blur-md">
-                  <div className="px-3.5 py-2 border-b border-burgundy/30">
-                    <div className="font-bold text-warm-ivory">{user.name}</div>
-                    <div className="text-[10px] text-warm-ivory/50 truncate">{user.email}</div>
-                    <div className="text-[9px] mt-1 inline-block px-1.5 py-0.5 bg-crimson/20 text-crimson border border-crimson/40 rounded font-bold">
-                      CLEARANCE: {user.role}
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => {
-                      setUserMenuOpen(false)
-                      onNavigate(user.role === 'CANDIDATE' ? 'candidate-dossier' : 'employer-dashboard')
-                    }}
-                    className="w-full text-left px-3.5 py-2 hover:bg-burgundy/20 text-warm-ivory flex items-center gap-2 cursor-pointer"
-                  >
-                    <User size={13} className="text-crimson" />
-                    <span>{user.role === 'CANDIDATE' ? 'Candidate Dossier' : 'Mastermind Console'}</span>
-                  </button>
-                  {(user.role === 'RECRUITER' || user.role === 'EMPLOYER_ADMIN' || user.role === 'ADMIN') && (
-                    <button
-                      onClick={() => {
-                        setUserMenuOpen(false)
-                        onNavigate('company-profile')
-                      }}
-                      className="w-full text-left px-3.5 py-2 hover:bg-burgundy/20 text-warm-ivory flex items-center gap-2 cursor-pointer"
-                    >
-                      <Building2 size={13} className="text-crimson" />
-                      <span>Syndicate Dossier & Settings</span>
-                    </button>
-                  )}
-                  <button
-                    onClick={() => {
-                      setUserMenuOpen(false)
-                      onNavigate('login')
-                    }}
-                    className="w-full text-left px-3.5 py-2 hover:bg-burgundy/20 text-warm-ivory flex items-center gap-2 cursor-pointer"
-                  >
-                    <KeyRound size={13} className="text-crimson" />
-                    <span>Switch Operative Clearance</span>
-                  </button>
-                  <div className="border-t border-burgundy/30 my-1" />
-                  <button
-                    onClick={() => {
-                      setUserMenuOpen(false)
-                      logout()
-                      onNavigate('login')
-                    }}
-                    className="w-full text-left px-3.5 py-2 hover:bg-crimson/20 text-crimson font-bold flex items-center gap-2 cursor-pointer"
-                  >
-                    <LogOut size={13} />
-                    <span>TERMINATE SESSION</span>
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <button
-              onClick={() => onNavigate('login')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-crimson to-blood-red text-white text-xs font-mono font-bold shadow-glow-crimson hover:brightness-110 active:scale-95 transition-all cursor-pointer"
-            >
-              <Shield size={13} />
-              <span>AUTHORIZE // LOGIN</span>
-            </button>
-          )}
         </div>
       </div>
     </header>

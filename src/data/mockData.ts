@@ -23,21 +23,21 @@ export interface TrackedSkill {
 }
 
 export const mockMarketData = {
-  totalJobsAnalyzed: 124530,
-  totalSkillsTracked: 2847,
-  totalRolesTracked: 389,
-  lastUpdated: '2026-09-24',
-  dataQuality: 'HIGH (99.4% Verified)',
+  totalJobsAnalyzed: 17443,
+  totalSkillsTracked: 8208,
+  totalRolesTracked: 10,
+  lastUpdated: '2026-10-07',
+  dataQuality: 'HIGH (100% Real Dataset)',
 
   topRoles: [
     {
-      name: 'Software Engineer',
-      demand: 9240,
-      trend: '+18.4%',
+      name: 'Data Scientist',
+      demand: 384,
+      trend: '+22.1%',
       growth: 'up' as const,
-      category: 'Engineering',
-      salary: '₹1.2M - ₹2.2M',
-      openings: 9240,
+      category: 'AI & Analytics',
+      salary: '₹10.2 - ₹17.8 Lakhs',
+      openings: 28867,
       trajectory: [
         { month: 'Apr', value: 65 },
         { month: 'May', value: 72 },
@@ -54,13 +54,13 @@ export const mockMarketData = {
       ],
     },
     {
-      name: 'Data Scientist',
-      demand: 8156,
-      trend: '+22.1%',
+      name: 'Data Engineer',
+      demand: 188,
+      trend: '+18.5%',
       growth: 'up' as const,
-      category: 'AI & Analytics',
-      salary: '₹1.4M - ₹2.6M',
-      openings: 8156,
+      category: 'Engineering',
+      salary: '₹8.2 - ₹13.6 Lakhs',
+      openings: 8044,
       trajectory: [
         { month: 'Apr', value: 58 },
         { month: 'May', value: 64 },
@@ -77,13 +77,13 @@ export const mockMarketData = {
       ],
     },
     {
-      name: 'Product Manager',
-      demand: 6823,
-      trend: '+12.3%',
+      name: 'Business Analyst',
+      demand: 188,
+      trend: '+14.2%',
       growth: 'up' as const,
-      category: 'Product',
-      salary: '₹1.6M - ₹2.8M',
-      openings: 6823,
+      category: 'Analytics',
+      salary: '₹6.8 - ₹11.1 Lakhs',
+      openings: 32843,
       trajectory: [
         { month: 'Apr', value: 50 },
         { month: 'May', value: 54 },
@@ -105,7 +105,7 @@ export const mockMarketData = {
       trend: '+15.6%',
       growth: 'up' as const,
       category: 'Engineering',
-      salary: '₹1.3M - ₹2.4M',
+      salary: '₹13L - ₹24L',
       openings: 7542,
       trajectory: [
         { month: 'Apr', value: 60 },
@@ -128,7 +128,7 @@ export const mockMarketData = {
       trend: '+31.2%',
       growth: 'up' as const,
       category: 'Cloud & Infrastructure',
-      salary: '₹1.5M - ₹2.7M',
+      salary: '₹15L - ₹27L',
       openings: 6234,
       trajectory: [
         { month: 'Apr', value: 48 },
@@ -151,7 +151,7 @@ export const mockMarketData = {
       trend: '+28.9%',
       growth: 'up' as const,
       category: 'DevOps',
-      salary: '₹1.4M - ₹2.5M',
+      salary: '₹14L - ₹25L',
       openings: 5678,
       trajectory: [
         { month: 'Apr', value: 52 },
@@ -172,32 +172,32 @@ export const mockMarketData = {
 
   topSkills: [
     {
-      name: 'JavaScript',
-      demand: 78,
-      trend: '+12.3%',
+      name: 'SQL',
+      demand: 9.8,
+      trend: '+15.2%',
       momentum: 'stable' as const,
-      category: 'Frontend & Fullstack',
-      urgency: 'MODERATE' as const,
-      pairedSkills: ['TypeScript', 'React', 'Node.js', 'HTML5/CSS3'],
-      roles: ['Full Stack Developer', 'Frontend Engineer', 'Software Engineer'],
+      category: 'Programming & Querying',
+      urgency: 'CRITICAL' as const,
+      pairedSkills: ['Python', 'Analytics', 'Data Visualization', 'ETL'],
+      roles: ['Data Analyst', 'Data Engineer', 'Business Analyst'],
       history: [
-        { month: 'Apr', value: 72 },
-        { month: 'May', value: 74 },
-        { month: 'Jun', value: 73 },
-        { month: 'Jul', value: 75 },
-        { month: 'Aug', value: 77 },
-        { month: 'Sep', value: 78 },
+        { month: 'Apr', value: 8.9 },
+        { month: 'May', value: 9.1 },
+        { month: 'Jun', value: 9.3 },
+        { month: 'Jul', value: 9.5 },
+        { month: 'Aug', value: 9.7 },
+        { month: 'Sep', value: 9.8 },
       ],
     },
     {
       name: 'Python',
-      demand: 76,
-      trend: '+18.4%',
+      demand: 6.07,
+      trend: '+22.4%',
       momentum: 'accelerating' as const,
-      category: 'AI & Backend',
+      category: 'Programming & Querying',
       urgency: 'HIGH' as const,
-      pairedSkills: ['PyTorch', 'FastAPI', 'Pandas', 'Docker'],
-      roles: ['Data Scientist', 'AI/ML Engineer', 'Backend Engineer'],
+      pairedSkills: ['Machine Learning', 'Pandas', 'NumPy', 'SQL'],
+      roles: ['Data Scientist', 'ML Engineer', 'Data Analyst'],
       history: [
         { month: 'Apr', value: 64 },
         { month: 'May', value: 67 },
@@ -328,24 +328,24 @@ export const mockMarketData = {
 
   compensationRanges: {
     softwareEngineer: {
-      junior: '₹450K - ₹750K',
-      mid: '₹850K - ₹1.5M',
-      senior: '₹1.7M - ₹2.8M+',
+      junior: '₹4.5L - ₹7.5L',
+      mid: '₹8.5L - ₹15L',
+      senior: '₹17L - ₹28L+',
     },
     dataScientist: {
-      junior: '₹500K - ₹850K',
-      mid: '₹950K - ₹1.7M',
-      senior: '₹1.8M - ₹3.2M+',
+      junior: '₹5.0L - ₹8.5L',
+      mid: '₹9.5L - ₹17L',
+      senior: '₹18L - ₹32L+',
     },
     cloudEngineer: {
-      junior: '₹500K - ₹800K',
-      mid: '₹900K - ₹1.6M',
-      senior: '₹1.8M - ₹3.0M+',
+      junior: '₹5.0L - ₹8.0L',
+      mid: '₹9.0L - ₹16L',
+      senior: '₹18L - ₹30L+',
     },
     fullStackDeveloper: {
-      junior: '₹450K - ₹750K',
-      mid: '₹850K - ₹1.5M',
-      senior: '₹1.6M - ₹2.7M+',
+      junior: '₹4.5L - ₹7.5L',
+      mid: '₹8.5L - ₹15L',
+      senior: '₹16L - ₹27L+',
     },
   },
 
@@ -598,7 +598,7 @@ export const mockJobs: JobListing[] = [
     location: 'Bangalore, India',
     type: 'Full-time',
     remote: 'Hybrid (2 days remote)',
-    salary: '₹1.8M - ₹2.4M',
+    salary: '₹18L - ₹24L',
     matchScore: 89,
     category: 'Immediate-Fit',
     matchBreakdown: {
@@ -626,7 +626,7 @@ export const mockJobs: JobListing[] = [
     location: 'Hyderabad, India',
     type: 'Full-time',
     remote: '100% Remote',
-    salary: '₹2.2M - ₹3.0M',
+    salary: '₹22L - ₹30L',
     matchScore: 78,
     category: 'Growth-Fit',
     matchBreakdown: {
@@ -654,7 +654,7 @@ export const mockJobs: JobListing[] = [
     location: 'Mumbai, India',
     type: 'Full-time',
     remote: 'Hybrid',
-    salary: '₹1.9M - ₹2.6M',
+    salary: '₹19L - ₹26L',
     matchScore: 86,
     category: 'Immediate-Fit',
     matchBreakdown: {
@@ -681,7 +681,7 @@ export const mockJobs: JobListing[] = [
     location: 'Pune, India',
     type: 'Full-time',
     remote: 'Hybrid',
-    salary: '₹1.7M - ₹2.3M',
+    salary: '₹17L - ₹23L',
     matchScore: 68,
     category: 'Growth-Fit',
     matchBreakdown: {
@@ -708,7 +708,7 @@ export const mockJobs: JobListing[] = [
     location: 'Bangalore, India',
     type: 'Full-time',
     remote: 'Hybrid',
-    salary: '₹2.4M - ₹3.5M',
+    salary: '₹24L - ₹35L',
     matchScore: 75,
     category: 'Growth-Fit',
     matchBreakdown: {
@@ -814,7 +814,7 @@ export const mockTalentVaultCandidates: TalentCandidate[] = [
     location: 'Bangalore (Open Remote)',
     readinessScore: 87,
     verifiedStatus: 'VERIFIED // LEVEL 4',
-    expectedSalary: '₹1.8M - ₹2.2M',
+    expectedSalary: '₹18L - ₹22L',
     availability: 'Immediate (15 Days)',
     topSkills: [
       { name: 'React', score: 8.5 },
@@ -833,7 +833,7 @@ export const mockTalentVaultCandidates: TalentCandidate[] = [
     location: 'Hyderabad, India',
     readinessScore: 94,
     verifiedStatus: 'VERIFIED // LEVEL 5',
-    expectedSalary: '₹2.6M - ₹3.2M',
+    expectedSalary: '₹26L - ₹32L',
     availability: '30 Days Notice',
     topSkills: [
       { name: 'AWS', score: 9.5 },
@@ -852,7 +852,7 @@ export const mockTalentVaultCandidates: TalentCandidate[] = [
     location: 'Remote // India',
     readinessScore: 91,
     verifiedStatus: 'VERIFIED // LEVEL 4',
-    expectedSalary: '₹2.4M - ₹2.9M',
+    expectedSalary: '₹24L - ₹29L',
     availability: 'Immediate',
     topSkills: [
       { name: 'Python', score: 9.6 },
@@ -871,7 +871,7 @@ export const mockTalentVaultCandidates: TalentCandidate[] = [
     location: 'Mumbai, India',
     readinessScore: 89,
     verifiedStatus: 'VERIFIED // LEVEL 4',
-    expectedSalary: '₹2.0M - ₹2.5M',
+    expectedSalary: '₹20L - ₹25L',
     availability: 'Immediate',
     topSkills: [
       { name: 'React', score: 9.4 },
@@ -890,7 +890,7 @@ export const mockTalentVaultCandidates: TalentCandidate[] = [
     location: 'Pune, India',
     readinessScore: 82,
     verifiedStatus: 'VERIFIED // LEVEL 3',
-    expectedSalary: '₹1.6M - ₹2.0M',
+    expectedSalary: '₹16L - ₹20L',
     availability: '15 Days Notice',
     topSkills: [
       { name: 'Docker', score: 8.8 },
@@ -909,7 +909,7 @@ export const mockTalentVaultCandidates: TalentCandidate[] = [
     location: 'Delhi NCR, India',
     readinessScore: 92,
     verifiedStatus: 'VERIFIED // LEVEL 5',
-    expectedSalary: '₹2.8M - ₹3.6M',
+    expectedSalary: '₹28L - ₹36L',
     availability: '30 Days Notice',
     topSkills: [
       { name: 'Product Analytics', score: 9.4 },
@@ -917,7 +917,7 @@ export const mockTalentVaultCandidates: TalentCandidate[] = [
       { name: 'User Research', score: 9.2 },
       { name: 'A/B Testing', score: 9.0 },
     ],
-    highlights: 'Scaled B2B developer tool from $1M to $14M ARR through data-driven product telemetry.',
+    highlights: 'Scaled B2B developer tool from ₹1 Cr to ₹14 Cr ARR through data-driven product telemetry.',
   },
 ]
 
@@ -1559,7 +1559,7 @@ export const mockIntelligenceFeed: IntelligenceBrief[] = [
     urgency: 'HIGH',
     title: 'Tier-1 Metro Compensation Bands Shift for TypeScript Specialists',
     content: 'Bangalore and Hyderabad hubs show a 14.8% jump in median base salaries for engineers with verified TypeScript and distributed system benchmark scores.',
-    momentum: '↑ ₹1.8M - ₹2.5M Median Band',
+    momentum: '↑ ₹18L - ₹25L Median Band',
     impactedRoles: ['Full Stack Developer', 'Frontend Engineer'],
   },
   {
@@ -1615,7 +1615,7 @@ export const mockRoleDossiers: Record<string, RoleDetailDossier> = {
     missionCode: 'OP-ENG-01',
     demandIndex: 92,
     growthRate: '+18.4%',
-    medianSalary: '₹1.5M',
+    medianSalary: '₹15L',
     activeOpenings: 9240,
     description: 'Designs, implements, and tests resilient software systems across the technology stack with high emphasis on algorithmic efficiency, scalability, and code maintainability.',
     requiredSkills: [
@@ -1630,9 +1630,9 @@ export const mockRoleDossiers: Record<string, RoleDetailDossier> = {
       { name: 'CI/CD Automation', weight: 68 },
     ],
     experienceBands: [
-      { level: 'Entry / Graduate', experience: '0-2 years', salary: '₹500K - ₹850K' },
-      { level: 'Mid-Level', experience: '2-5 years', salary: '₹900K - ₹1.7M' },
-      { level: 'Senior Engineer', experience: '5-8+ years', salary: '₹1.8M - ₹3.0M+' },
+      { level: 'Entry / Graduate', experience: '0-2 years', salary: '₹5.0L - ₹8.5L' },
+      { level: 'Mid-Level', experience: '2-5 years', salary: '₹9.0L - ₹17L' },
+      { level: 'Senior Engineer', experience: '5-8+ years', salary: '₹18L - ₹30L+' },
     ],
     careerTransitions: [
       { nextRole: 'Full Stack Developer', feasibility: 'High (88% Match)', typicalTime: '6-12 Months' },
@@ -1648,7 +1648,7 @@ export const mockRoleDossiers: Record<string, RoleDetailDossier> = {
     missionCode: 'OP-FS-02',
     demandIndex: 88,
     growthRate: '+15.6%',
-    medianSalary: '₹1.6M',
+    medianSalary: '₹16L',
     activeOpenings: 7542,
     description: 'Bridges frontend client experiences with backend service layers. Builds complete product features from user interface components down to database transactions.',
     requiredSkills: [
@@ -1663,9 +1663,9 @@ export const mockRoleDossiers: Record<string, RoleDetailDossier> = {
       { name: 'Redis Caching', weight: 65 },
     ],
     experienceBands: [
-      { level: 'Junior Operative', experience: '1-2 years', salary: '₹550K - ₹900K' },
-      { level: 'Core Operative', experience: '2-5 years', salary: '₹1.0M - ₹1.8M' },
-      { level: 'Lead Architect', experience: '5-8+ years', salary: '₹2.0M - ₹3.4M+' },
+      { level: 'Junior Operative', experience: '1-2 years', salary: '₹5.5L - ₹9.0L' },
+      { level: 'Core Operative', experience: '2-5 years', salary: '₹10L - ₹18L' },
+      { level: 'Lead Architect', experience: '5-8+ years', salary: '₹20L - ₹34L+' },
     ],
     careerTransitions: [
       { nextRole: 'Cloud Solutions Architect', feasibility: 'High (82% Match)', typicalTime: '12-18 Months' },
@@ -1680,7 +1680,7 @@ export const mockRoleDossiers: Record<string, RoleDetailDossier> = {
     missionCode: 'OP-CLOUD-03',
     demandIndex: 94,
     growthRate: '+31.2%',
-    medianSalary: '₹1.8M',
+    medianSalary: '₹18L',
     activeOpenings: 6234,
     description: 'Architects and orchestrates resilient multi-region cloud environments, serverless computing pipelines, security postures, and cost-efficient infrastructure.',
     requiredSkills: [
@@ -1694,9 +1694,9 @@ export const mockRoleDossiers: Record<string, RoleDetailDossier> = {
       { name: 'Prometheus & Grafana', weight: 72 },
     ],
     experienceBands: [
-      { level: 'Cloud Associate', experience: '1-3 years', salary: '₹650K - ₹1.1M' },
-      { level: 'Cloud Engineer', experience: '3-6 years', salary: '₹1.2M - ₹2.2M' },
-      { level: 'Principal Cloud Architect', experience: '6+ years', salary: '₹2.4M - ₹4.2M+' },
+      { level: 'Cloud Associate', experience: '1-3 years', salary: '₹6.5L - ₹11L' },
+      { level: 'Cloud Engineer', experience: '3-6 years', salary: '₹12L - ₹22L' },
+      { level: 'Principal Cloud Architect', experience: '6+ years', salary: '₹24L - ₹42L+' },
     ],
     careerTransitions: [
       { nextRole: 'Principal Cloud Architect', feasibility: 'Very High (92% Match)', typicalTime: '2-3 Years' },
@@ -1711,7 +1711,7 @@ export const mockRoleDossiers: Record<string, RoleDetailDossier> = {
     missionCode: 'OP-DATA-04',
     demandIndex: 90,
     growthRate: '+22.1%',
-    medianSalary: '₹1.7M',
+    medianSalary: '₹17L',
     activeOpenings: 8156,
     description: 'Extracts predictive signals and trains machine learning models from large-scale structured and unstructured datasets to drive automated decision intelligence.',
     requiredSkills: [
@@ -1725,9 +1725,9 @@ export const mockRoleDossiers: Record<string, RoleDetailDossier> = {
       { name: 'MLOps & Model Serving', weight: 75 },
     ],
     experienceBands: [
-      { level: 'Data Analyst / Associate', experience: '0-2 years', salary: '₹550K - ₹950K' },
-      { level: 'Data Scientist', experience: '2-5 years', salary: '₹1.1M - ₹2.0M' },
-      { level: 'Staff AI Scientist', experience: '5+ years', salary: '₹2.2M - ₹4.0M+' },
+      { level: 'Data Analyst / Associate', experience: '0-2 years', salary: '₹5.5L - ₹9.5L' },
+      { level: 'Data Scientist', experience: '2-5 years', salary: '₹11L - ₹20L' },
+      { level: 'Staff AI Scientist', experience: '5+ years', salary: '₹22L - ₹40L+' },
     ],
     careerTransitions: [
       { nextRole: 'Machine Learning Engineer', feasibility: 'High (85% Match)', typicalTime: '6-12 Months' },

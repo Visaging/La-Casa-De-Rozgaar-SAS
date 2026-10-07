@@ -376,7 +376,7 @@ export class SkillDemandAggregator {
       }
     }
 
-    console.log(`✅ Saved ${demands.length} skill demand records`);
+    console.log(`[OK] Saved ${demands.length} skill demand records`);
   }
 
   /**

@@ -82,7 +82,7 @@ async function populateMissingSeeds() {
         ON CONFLICT (id) DO NOTHING
       `, [r.id, r.title, r.provider, r.url, r.type, r.difficulty, r.duration_hours, r.rating, r.cost, r.skills]);
     }
-    console.log(`✅ Seeded ${resources.length} learning resources.`);
+    console.log(`[OK] Seeded ${resources.length} learning resources.`);
   }
 
   // 2. Interview Questions
@@ -138,7 +138,7 @@ async function populateMissingSeeds() {
         ON CONFLICT (id) DO NOTHING
       `, [q.id, q.role_id, q.skill_id, q.question, q.sample_answer, q.difficulty, q.key_points, q.evaluation_criteria]);
     }
-    console.log(`✅ Seeded ${questions.length} interview questions.`);
+    console.log(`[OK] Seeded ${questions.length} interview questions.`);
   }
 
   await pool.end();

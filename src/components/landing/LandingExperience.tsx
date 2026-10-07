@@ -9,14 +9,14 @@ import { PromptButton, TerminalPrompt } from "./TerminalPrompt";
 import { useLandingAudio } from "./useLandingAudio";
 
 export interface LandingExperienceProps {
-  /** Target URL for the existing project's login page (defaults to "/login") */
+  /** Target URL for main dashboard (defaults to "#/war-room") */
   loginUrl?: string;
   /** Custom callback when the user accepts recruitment by clicking "[ Yes, I'm in ]" */
   onJoin?: () => void;
 }
 
 export function LandingExperience({
-  loginUrl = "/login",
+  loginUrl = "#/war-room",
   onJoin,
 }: LandingExperienceProps = {}) {
   const audio = useLandingAudio();
@@ -359,7 +359,7 @@ export function LandingExperience({
             onClick={audio.toggle}
             className="absolute bottom-5 right-5 z-40 cursor-pointer font-mono text-[10px] tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
           >
-            {audio.playing ? "♪ sound on" : "♪ sound off"}
+            {audio.playing ? "SOUND ON" : "SOUND OFF"}
           </button>
         )}
 

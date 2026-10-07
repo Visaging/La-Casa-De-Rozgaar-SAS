@@ -182,12 +182,12 @@ router.put('/progress/:resourceId', async (req: Request, res: Response) => {
       if (status) { updates.push('status = ?'); params.push(status); }
       if (progress !== undefined) { updates.push('progress = ?'); params.push(progress); }
       if (timeSpentMinutes !== undefined) { updates.push('time_spent_minutes = ?'); params.push(timeSpentMinutes); }
-      if (status === 'IN_PROGRESS') { updates.push(`started_at = COALESCE(started_at, NOW())`); }
-      if (status === 'COMPLETED') { updates.push(`completed_at = NOW()`); updates.push('progress = 100'); }
+      if (status === 'IN_PROGRESS') { updates.push(`started_at = COALESCE(started_at, datetime('now'))`); }
+      if (status === 'COMPLETED') { updates.push(`completed_at = datetime('now')`); updates.push('progress = 100'); }
       params.push(existing.id);
       await db.prepare(`UPDATE learning_progress SET ${updates.join(', ')} WHERE id = ?`).run(...params);
     } else {
-      await db.prepare("INSERT INTO learning_progress (id, user_id, resource_id, status, progress, time_spent_minutes, started_at) VALUES (?, ?, ?, ?, ?, ?, NOW())")
+      await db.prepare("INSERT INTO learning_progress (id, user_id, resource_id, status, progress, time_spent_minutes, started_at) VALUES (?, ?, ?, ?, ?, ?, datetime('now'))")
         .run(generateId(), req.user!.userId, req.params.resourceId, status || 'IN_PROGRESS', progress || 0, timeSpentMinutes || 0);
     }
 

@@ -133,7 +133,7 @@ async function seed() {
       );
     }
 
-    console.log('[SEED] Module 1 seed completed successfully! ✅');
+    console.log('[SEED] Module 1 seed completed successfully!');
   } catch (err: any) {
     console.error('[SEED] Seed error:', err.message);
   } finally {

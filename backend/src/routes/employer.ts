@@ -112,7 +112,7 @@ router.put('/:id', requireOrganization, async (req: Request, res: Response) => {
     if (logoUrl !== undefined) { updates.push('logo_url = ?'); params.push(logoUrl); }
 
     if (updates.length) {
-      updates.push(`updated_at = NOW()`);
+      updates.push(`updated_at = datetime('now')`);
       params.push(req.params.id);
       await db.prepare(`UPDATE organizations SET ${updates.join(', ')} WHERE id = ?`).run(...params);
     }
@@ -259,7 +259,7 @@ router.put('/:id/roles/:roleId', requireOrganization, async (req: Request, res: 
     if (preferredSkills) { updates.push('preferred_skills = ?'); params.push(JSON.stringify(preferredSkills)); }
 
     if (updates.length) {
-      updates.push(`updated_at = NOW()`);
+      updates.push(`updated_at = datetime('now')`);
       params.push(req.params.roleId, req.params.id);
       await db.prepare(`UPDATE organization_roles SET ${updates.join(', ')} WHERE id = ? AND organization_id = ?`).run(...params);
     }
@@ -544,7 +544,7 @@ router.get('/market-roles', async (req: Request, res: Response) => {
         AVG(CASE WHEN salary_min > 0 THEN salary_min ELSE NULL END) as avg_min,
         AVG(CASE WHEN salary_max > 0 THEN salary_max ELSE NULL END) as avg_max
       FROM job_postings
-      WHERE created_at >= NOW() - INTERVAL '90 days'
+      WHERE created_at >= datetime('now', '-90 days')
       GROUP BY role_title
       ORDER BY openings DESC
       LIMIT 4

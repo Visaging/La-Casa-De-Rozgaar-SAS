@@ -41,15 +41,15 @@ async function start() {
 ║                                                               ║
 ╚═══════════════════════════════════════════════════════════════╝
 
-🚀 Server started successfully
+Server started successfully
 
-📍 API Server:      http://${config.host}:${config.port}
-📚 Documentation:   http://localhost:${config.port}/api/docs
-❤️  Health Check:   http://localhost:${config.port}/api/health
+API Server:      http://${config.host}:${config.port}
+Documentation:   http://localhost:${config.port}/api/docs
+Health Check:   http://localhost:${config.port}/api/health
 
-🔧 Environment:     ${config.nodeEnv}
-📊 Log Level:       ${config.logging.level}
-🗄️  Database:       ${config.database.name}
+Environment:     ${config.nodeEnv}
+Log Level:       ${config.logging.level}
+Database:       ${config.database.name}
 
 Press CTRL+C to stop
     `);
@@ -57,26 +57,26 @@ Press CTRL+C to stop
     // Graceful shutdown handler
     signals.forEach((signal) => {
       process.on(signal, async () => {
-        console.log(`\n⚠️  ${signal} received, starting graceful shutdown...`);
+        console.log(`\n[SHUTDOWN] ${signal} received, starting graceful shutdown...`);
 
         if (!app) {
-          console.log('⚠️  Server not initialized');
+          console.log('[WARN] Server not initialized');
           process.exit(0);
         }
 
         try {
           // Close Fastify server
           await app.close();
-          console.log('✅ HTTP server closed');
+          console.log('[OK] HTTP server closed');
 
           // Close database connections
           await closePool();
-          console.log('✅ Database connections closed');
+          console.log('[OK] Database connections closed');
 
-          console.log('✅ Graceful shutdown completed');
+          console.log('[OK] Graceful shutdown completed');
           process.exit(0);
         } catch (error) {
-          console.error('❌ Error during shutdown:', error);
+          console.error('[ERROR] Error during shutdown:', error);
           process.exit(1);
         }
       });
@@ -84,16 +84,16 @@ Press CTRL+C to stop
 
     // Handle uncaught errors
     process.on('uncaughtException', (error) => {
-      console.error('❌ Uncaught Exception:', error);
+      console.error('[FATAL] Uncaught Exception:', error);
       process.exit(1);
     });
 
     process.on('unhandledRejection', (reason, promise) => {
-      console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
+      console.error('[FATAL] Unhandled Rejection at:', promise, 'reason:', reason);
       process.exit(1);
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error('[FATAL] Failed to start server:', error);
     process.exit(1);
   }
 }

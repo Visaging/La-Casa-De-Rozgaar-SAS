@@ -1,8 +1,7 @@
 import { useState, useEffect, useMemo, type ReactNode, type FC } from 'react'
-import { Search, X, Zap, User, Briefcase, FileText, CornerDownLeft, Shield } from 'lucide-react'
-import { mockJobs, mockMarketData, mockTalentVaultCandidates } from '../data/mockData'
+import { Search, X, Zap, Briefcase, CornerDownLeft, Sparkles, Layers } from 'lucide-react'
+import { mockMarketData } from '../data/mockData'
 import { useTheme } from '../hooks/useTheme'
-import { useAuth } from '../hooks/useAuth'
 import { cn } from '../lib/utils'
 
 interface CommandPaletteProps {
@@ -15,20 +14,15 @@ interface PaletteItem {
   id: string
   title: string
   subtitle: string
-  category: 'NAVIGATION' | 'JOBS' | 'CANDIDATES' | 'SKILLS'
+  category: 'NAVIGATION' | 'SKILLS'
   pageTarget: string
   icon: ReactNode
 }
 
 export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNavigate }) => {
   const { setMode, isHeist } = useTheme()
-  const { user } = useAuth()
   const [query, setQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(0)
-
-  const isCandidate = user?.role === 'CANDIDATE'
-  const isEmployer = user?.role === 'RECRUITER' || user?.role === 'EMPLOYER_ADMIN'
-  const isAdmin = user?.role === 'ADMIN'
 
   // Global key listener for Ctrl+K / Cmd+K and Escape
   useEffect(() => {
@@ -37,8 +31,6 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
         e.preventDefault()
         if (isOpen) {
           onClose()
-        } else {
-          // Open
         }
       }
       if (e.key === 'Escape' && isOpen) {
@@ -59,58 +51,18 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
           : 'Arm classified Money Heist tactical intelligence command center',
         category: 'NAVIGATION',
         pageTarget: isHeist ? '__theme:professional' : '__theme:heist',
-        icon: isHeist ? <Briefcase size={14} className="text-blue-400" /> : <Shield size={14} className="text-crimson" />,
+        icon: isHeist ? <Briefcase size={14} className="text-blue-400" /> : <Zap size={14} className="text-crimson" />,
       },
     ]
 
-    const allPages: (PaletteItem & { roleScope?: 'candidate' | 'employer' })[] = [
+    const allPages: PaletteItem[] = [
       { id: 'p-landing', title: isHeist ? 'Classified Briefing // 3D Landing Experience' : 'Platform Overview & 3D Briefing', subtitle: 'Experience the 3D briefing room, tactical dossier, and operation intro', category: 'NAVIGATION', pageTarget: 'landing', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-0', title: isHeist ? 'Identity & Access // Operative Clearance' : 'Authentication & Login Gateway', subtitle: 'Sign in, request clearance, or switch operative personas', category: 'NAVIGATION', pageTarget: 'login', icon: <Shield size={14} className="text-crimson" /> },
       { id: 'p-1', title: isHeist ? 'War Room Command' : 'Executive Overview', subtitle: 'Macro Overview & Intelligence Pulse', category: 'NAVIGATION', pageTarget: 'war-room', icon: <Zap size={14} className="text-crimson" /> },
       { id: 'p-2', title: isHeist ? 'Market Intelligence Radar' : 'Market Demand Dynamics', subtitle: 'Hiring Volume, Velocity & Geo Analysis', category: 'NAVIGATION', pageTarget: 'market-intelligence', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-3', title: isHeist ? 'Skill Intelligence Radar' : 'Skill Analytics & Adoption', subtitle: 'Tech Adoption Curves & Pairings', category: 'NAVIGATION', pageTarget: 'skill-intelligence', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-4', title: isHeist ? 'Role Intelligence Dossiers' : 'Role Competencies', subtitle: 'Competency Blueprints & Pathways', category: 'NAVIGATION', pageTarget: 'role-intelligence', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-5', title: 'Compensation Intelligence', subtitle: 'Salary Percentiles & City Multipliers', category: 'NAVIGATION', pageTarget: 'compensation', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-6', title: 'Future Workforce Forecast', subtitle: '3-Year Horizon & Obsolescence Risk', category: 'NAVIGATION', pageTarget: 'forecast', icon: <Zap size={14} className="text-crimson" /> },
-      { id: 'p-7', title: isHeist ? 'Candidate Dossier Profile' : 'Candidate Competency Dossier', subtitle: 'Alex Rivera Capability Benchmark', category: 'NAVIGATION', pageTarget: 'candidate-dossier', icon: <User size={14} className="text-emerald-400" />, roleScope: 'candidate' },
-      { id: 'p-8', title: 'Secure Skill Assessment', subtitle: 'Timed Proctored Examination', category: 'NAVIGATION', pageTarget: 'assessment', icon: <User size={14} className="text-emerald-400" />, roleScope: 'candidate' },
-      { id: 'p-9', title: isHeist ? 'Skill Heist Roadmap' : 'Targeted Upskilling Plan', subtitle: 'Gap Elimination & Sprint Planning', category: 'NAVIGATION', pageTarget: 'skill-heist', icon: <User size={14} className="text-emerald-400" />, roleScope: 'candidate' },
-      { id: 'p-10', title: 'AI Job Finder', subtitle: 'Explainable Fit & Opportunities', category: 'NAVIGATION', pageTarget: 'job-finder', icon: <Briefcase size={14} className="text-blue-400" />, roleScope: 'candidate' },
-      { id: 'p-11', title: 'Career Intelligence', subtitle: 'Promotional Vectors & Milestones', category: 'NAVIGATION', pageTarget: 'career-intelligence', icon: <User size={14} className="text-emerald-400" />, roleScope: 'candidate' },
-      { id: 'p-12', title: 'Simulation Vault', subtitle: 'Interactive What-If Skill Sandbox', category: 'NAVIGATION', pageTarget: 'simulation', icon: <User size={14} className="text-emerald-400" />, roleScope: 'candidate' },
-      { id: 'p-13', title: isHeist ? 'Employer Mastermind HQ' : 'Employer Workforce HQ', subtitle: 'Workforce Planning & Capability', category: 'NAVIGATION', pageTarget: 'employer-dashboard', icon: <Briefcase size={14} className="text-muted-gold" />, roleScope: 'employer' },
-      { id: 'p-14', title: 'Talent Vault Discovery', subtitle: 'Recruiter Candidate Search', category: 'NAVIGATION', pageTarget: 'talent-vault', icon: <Briefcase size={14} className="text-muted-gold" />, roleScope: 'employer' },
-      { id: 'p-15', title: isHeist ? 'Workforce Simulation Sandbox' : 'Workforce Scenario Simulator', subtitle: 'Model Hire vs Upskill Strategy & ROI', category: 'NAVIGATION', pageTarget: 'workforce-simulator', icon: <Briefcase size={14} className="text-muted-gold" />, roleScope: 'employer' },
-      { id: 'p-15b', title: isHeist ? 'Mastermind Syndicate Profile' : 'Company Profile & Settings', subtitle: 'Recruitment Settings & Organization Identity', category: 'NAVIGATION', pageTarget: 'company-profile', icon: <Briefcase size={14} className="text-muted-gold" />, roleScope: 'employer' },
-      { id: 'p-16', title: isHeist ? 'Resistance Learning Sprints' : 'Structured Learning Curriculum', subtitle: 'Gap-Driven Curriculum', category: 'NAVIGATION', pageTarget: 'roadmap', icon: <FileText size={14} className="text-amber-400" /> },
-      { id: 'p-17', title: 'Interview Intelligence', subtitle: 'Reported Technical Questions', category: 'NAVIGATION', pageTarget: 'interviews', icon: <FileText size={14} className="text-amber-400" /> },
-      { id: 'p-18', title: 'Research Intelligence', subtitle: 'Foundational AI Papers', category: 'NAVIGATION', pageTarget: 'research', icon: <FileText size={14} className="text-amber-400" /> },
-      { id: 'p-19', title: 'Intelligence Feed Wire', subtitle: 'Live Briefings & Alerts', category: 'NAVIGATION', pageTarget: 'feed', icon: <Zap size={14} className="text-crimson" /> },
+      { id: 'p-3', title: isHeist ? 'Skill Intelligence Radar' : 'Skill Analytics & Adoption', subtitle: 'Canonical Skills & Co-occurrence Network', category: 'NAVIGATION', pageTarget: 'skill-intelligence', icon: <Layers size={14} className="text-crimson" /> },
+      { id: 'p-4', title: isHeist ? 'Role Intelligence Dossiers' : 'Role Competencies', subtitle: 'Standardized Role Families & Pathways', category: 'NAVIGATION', pageTarget: 'role-intelligence', icon: <Briefcase size={14} className="text-crimson" /> },
+      { id: 'p-12', title: 'Simulation Vault (ML Models)', subtitle: 'JDS Salary & SDS Leadership ML Inference', category: 'NAVIGATION', pageTarget: 'simulation', icon: <Sparkles size={14} className="text-emerald-400" /> },
     ]
-
-    const pages: PaletteItem[] = allPages.filter((p) => {
-      if (p.roleScope === 'candidate') return isCandidate || isAdmin
-      if (p.roleScope === 'employer') return isEmployer || isAdmin
-      return true
-    })
-
-    const jobs: PaletteItem[] = (!isEmployer ? mockJobs : []).map((j) => ({
-      id: j.id,
-      title: j.title,
-      subtitle: `${j.company} • ${j.salary} • Match: ${j.matchScore}%`,
-      category: 'JOBS',
-      pageTarget: 'job-finder',
-      icon: <Briefcase size={14} className="text-blue-400" />,
-    }))
-
-    const candidates: PaletteItem[] = (isEmployer || isAdmin ? mockTalentVaultCandidates : []).map((c) => ({
-      id: c.id,
-      title: `${c.name} (${c.codeName})`,
-      subtitle: `${c.targetRole} • Readiness: ${c.readinessScore}%`,
-      category: 'CANDIDATES',
-      pageTarget: 'talent-vault',
-      icon: <User size={14} className="text-emerald-400" />,
-    }))
 
     const skills: PaletteItem[] = mockMarketData.topSkills.map((s) => ({
       id: `skill-${s.name}`,
@@ -121,8 +73,8 @@ export const CommandPalette: FC<CommandPaletteProps> = ({ isOpen, onClose, onNav
       icon: <Zap size={14} className="text-crimson" />,
     }))
 
-    return [...themeCommands, ...pages, ...jobs, ...candidates, ...skills]
-  }, [isHeist, isCandidate, isEmployer, isAdmin, user?.role])
+    return [...themeCommands, ...allPages, ...skills]
+  }, [isHeist])
 
   const filtered = useMemo(() => {
     if (!query.trim()) return allItems.slice(0, 8)

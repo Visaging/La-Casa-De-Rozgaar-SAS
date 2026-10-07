@@ -978,7 +978,7 @@ Retention Policy:
 
 ## 11. Data Migration & Sync
 
-### 11.1 SQLite ↔ PostgreSQL Sync
+### 11.1 SQLite and PostgreSQL Sync
 
 **SQL Dialect Translation:**
 ```
@@ -1093,11 +1093,11 @@ Planned: v2 (2027)
 - **Comprehensive data validation** & referential integrity
 
 This architecture enables:
-✅ Offline-first candidate experience  
-✅ Real-time employer workforce intelligence  
-✅ Seamless skill gap → learning path → job match pipeline  
-✅ Audit trail & compliance tracking  
-✅ Flexible scaling to Redis + Elasticsearch + Data Warehouse  
+- Offline-first candidate experience  
+- Real-time employer workforce intelligence  
+- Seamless skill gap -> learning path -> job match pipeline  
+- Audit trail & compliance tracking  
+- Flexible scaling to Redis + Elasticsearch + Data Warehouse  
 
 **Key Design Principles:**
 1. **Resilience:** Offline fallback to mock data + localStorage

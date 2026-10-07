@@ -154,7 +154,7 @@ router.post('/attempts/:attemptId/answers', async (req: Request, res: Response) 
     // Upsert answer
     const existing = await db.prepare('SELECT id FROM assessment_answers WHERE attempt_id = ? AND question_id = ?').get(req.params.attemptId, questionId) as any;
     if (existing) {
-      await db.prepare("UPDATE assessment_answers SET answer = ?, is_correct = ?, score = ?, answered_at = NOW() WHERE id = ?")
+      await db.prepare("UPDATE assessment_answers SET answer = ?, is_correct = ?, score = ?, answered_at = datetime('now') WHERE id = ?")
         .run(JSON.stringify(answer), isCorrect ? 1 : 0, score, existing.id);
     } else {
       await db.prepare('INSERT INTO assessment_answers (id, attempt_id, question_id, answer, is_correct, score) VALUES (?, ?, ?, ?, ?, ?)')
@@ -246,7 +246,7 @@ router.post('/attempts/:attemptId/submit', async (req: Request, res: Response) =
     const status = highSeverityCount >= config.assessment.integrityThreshold ? 'FLAGGED' : 'COMPLETED';
 
     await db.prepare(`UPDATE assessment_attempts SET
-      submitted_at = NOW(),
+      submitted_at = datetime('now'),
       status = ?,
       score = ?,
       skill_scores = ?,
@@ -261,7 +261,7 @@ router.post('/attempts/:attemptId/submit', async (req: Request, res: Response) =
         const existing = await db.prepare('SELECT id FROM candidate_skills WHERE candidate_id = ? AND skill_id = ?').get(profile.id, skillId) as any;
         const roundedScore = Math.round(score * 10) / 10;
         if (existing) {
-          await db.prepare("UPDATE candidate_skills SET assessment_score = ?, verified_score = ?, confidence = ?, last_assessed_at = NOW(), source = ? WHERE id = ?")
+          await db.prepare("UPDATE candidate_skills SET assessment_score = ?, verified_score = ?, confidence = ?, last_assessed_at = datetime('now'), source = ? WHERE id = ?")
             .run(roundedScore, roundedScore, 0.85, 'ASSESSMENT', existing.id);
         }
       }
@@ -362,7 +362,7 @@ router.post('/submit-direct', async (req: Request, res: Response) => {
       await db.prepare(`INSERT INTO assessments (id, title, description, difficulty, duration_minutes, question_count, created_by) VALUES (?, ?, ?, ?, ?, ?, ?)`).run(assessmentId, 'Secure Diagnostic Assessment', 'Proctored engineering skill assessment', 'INTERMEDIATE', 60, 20, req.user!.userId);
     }
 
-    await db.prepare(`INSERT INTO assessment_attempts (id, user_id, assessment_id, started_at, submitted_at, status, score, integrity_summary) VALUES (?, ?, ?, NOW(), NOW(), ?, ?, ?)`).run(attemptId, req.user!.userId, assessmentId, status, score || 0, JSON.stringify(integritySummary));
+    await db.prepare(`INSERT INTO assessment_attempts (id, user_id, assessment_id, started_at, submitted_at, status, score, integrity_summary) VALUES (?, ?, ?, datetime('now'), datetime('now'), ?, ?, ?)`).run(attemptId, req.user!.userId, assessmentId, status, score || 0, JSON.stringify(integritySummary));
 
     auditLog(req.user!.userId, 'ASSESSMENT_SUBMITTED', 'assessment_attempt', attemptId, { score, percentage, trustScore, status });
 
